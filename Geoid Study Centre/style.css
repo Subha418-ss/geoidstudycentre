@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+  }
+  
+  header {
+    background: #00d9ff;
+    color: #ffffff;
+    padding: 15px 0;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  nav ul li {
+    margin: 0 10px;
+  }
+  
+  nav ul li a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  section {
+    padding: 20px;
+    background: #14022b;
+    margin: 10px;
+    border-radius: 8px;
+  }
+  
+  form input, form button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  form button {
+    background: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  #chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #add617;
+    color: #ffffff;
+    padding: 12px 14px;
+    border-radius: 50%;
+    font-size:30px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+  }
+  
+  #chat-window {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  #chat-header {
+    background: #007bff;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  #chat-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    font-size: 14px;
+  }
+  
+  #chat-input {
+    display: flex;
+    border-top: 1px solid #ccc;
+  }
+  
+  #chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+  }
+  
+  #chat-input button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background: #555;
+  }
+  
+  footer {
+    position: relative;
+    z-index: 1100;
+    text-align: center;
+    padding: 30px;
+    background: #333;
+    color: rgb(255, 255, 255);
+  }

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+content="width=device-width,initial-scale=1.0"/>
+    <title>GEOID STUDY CENTRE</title>
+    <link rel="stylesheet"
+href="style.css" />
+</head>
+<body>
+   <header>
+     <h1>GEOID STUDY CENTRE</h1>
+<title>Professional Navar</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif'
+  }
+
+nav {
+  background-color:crimson;
+  padding: 12px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: centre;
+  box-shadow: 0 2px 6px;
+rgba(0,0,0,0.1);
+}
+
+.logo {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.menu {
+  list-style:none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin: 0 15px;
+}
+
+.menu li a{
+text-decoration: none;
+color: rgb(255, 255, 255);
+font-size: 16px;
+transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+  color: #ffcc00;
+}
+
+@media (max-width: 480px) {
+  .menu { 
+    flex-direction:column;
+    background: #0b3d91;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    display: none;
+}
+
+.menu.show {
+  display: flex;
+}
+
+.toggle {
+  display: none;
+}
+  </style> 
+</head>
+<body>
+
+     <nav>
+      <div class="toggle"
+      onclick=""toggleMenu()">Ξ</div>
+        <u1 class="menu" id="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="My Courses.html">Course</a></li>
+            <li><a href="#admission">Admission</a></li>
+            <li><a href="notice.html">Notice</a></li>
+            <li><a href="#notes">Notes</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+            <li><a href="#video">Video</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="Dashboard.html">Dashboard</a></li>
+            <li><a href="login.html">Login</a></li>
+            <LI><A HREF="Payment">Payment</A></LI>
+            <li><a href="Geoid Store">Geoid Store</a></li>
+        </u1>
+     </nav>
+  <script>
+    function toggleMenu() {
+      const menu =
+  document.getElementByID("menu");
+  menu.classList.toggle("show");
+    }
+  </script>
+
+   <section id="home">
+    <h2>Welcome to My Institute</h2>
+    <p>Your gateway to success. Learn from the best and achieve your dreams.</p>
+   </section>
+   
+   <section id="courses">
+    <h2>Courses & Pricing(Geography)</h2>
+    <ul>
+      <li>Basic Foundation Class 8 - ₹499</li>
+      <li>Class 9 & 10 (Madhyamik) - ₹599</li>
+      <li>Class 11 & 12 - ₹699</li>
+    </ul>
+  </section>
+
+  <section id="admission">
+    <h2>Admission Form</h2>
+    <form>
+      <input type="text" placeholder="Full Name" />
+      <input type="email" placeholder="Email" />
+      <input type="text" placeholder="Course Interested" />
+      <input type="text" placeholder="Phone Number" />
+      <input type="text" placeholder="Your City" />
+      <input type="text" placeholder="PIN Number" />
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <section id="notes">
+  <div class="notes-container">
+    <h2>Download Notes</h2>
+
+    <div class="filter-buttons">
+      <button
+    onclick="filterNotes('all')"
+    class="active">All</button>
+    <button
+  onclick="filterNotes('geography')">Geography</button>
+      </div>
+
+      <div class="notes-grid">
+        
+        <div class="note-box geography">
+          <h3>🌍 Geography - Earth's Structure</h3>
+          <a herf="4YearBScHonoursMajorinMathematics.pdf" download class="download-btn">⬇️ Download PDF</a>
+        <div
+
+        </div>
+    </div>
+  </section>
+
+  <section id="quiz">
+    <h2>Daily Practice Questions</h2>
+    <p>Comming Soon...</p>
+  </section>
+
+  <section id="video">
+    <h2>Free Class</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+  </section>
+
+  <div id="chat-icon"
+  onclick="toggleChat()">👨‍🎓</div>
+
+  <div id="chat-window">
+  <div id="chat-header">Geoid Guru-Ask Me Anything!</div>
+  <div id="chat-body"></div>
+  <div id="chat-input">
+    <input type="text"
+id="user-input" placeholder="'Type your question..." />
+<button
+onclick="sendmassage()">Send</button>
+  </div>
+</div>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: info@geoidstudycentre.com</p>
+    <p>Phone: +91-8207084112</p>
+  </section>
+
+  <footer>
+    <footer style="background-color:#222;
+    color: #fff; padding: 30px
+    20px; text-align: center;">
+    <div class="footer-links">
+      <a href="disclaimer.html">Disclaimer</a> |
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="company.html">Company</a> |
+      <a href="terms.html">Terms & Conditions</a> |
+      <a href="refund.html">Return & Refund</a>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 Geoid Study centre. All rights reserved. Build By - Subhadip Satpati
+    </div>
+  </footer>
+
+</body>
+</html>
