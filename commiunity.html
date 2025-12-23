@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community | GEOID STUDY CENTRE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0a3d62;
+            --secondary: #ffd32a; /* Premium Gold */
+            --accent: #00d2ff;
+            --dark-bg: #030d16;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+        body {
+            background-color: var(--dark-bg);
+            /* Texture background */
+            background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Header --- */
+        header {
+            background: linear-gradient(to right, #0a3d62, #051929);
+            border-bottom: 3px solid var(--secondary);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 60px auto;
+            flex: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .section-title span { color: var(--secondary); }
+
+        /* --- Full Frame Grid --- */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .member-card {
+            position: relative;
+            height: 480px;
+            border-radius: 25px;
+            overflow: hidden;
+            background: #111;
+            transition: 0.5s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 40px rgba(0, 210, 255, 0.2);
+        }
+
+        .member-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .member-card:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.7);
+        }
+
+        /* Full Frame Overlay */
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, 
+                rgba(3, 13, 22, 1) 0%, 
+                rgba(3, 13, 22, 0.7) 30%, 
+                transparent 70%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            transition: 0.4s;
+        }
+
+        .member-info h3 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .member-info .role {
+            color: var(--secondary);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* --- Connect Button --- */
+        .connect-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: 0.3s;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .member-card:hover .connect-btn {
+            background: var(--secondary);
+            color: var(--dark-bg);
+            border-color: var(--secondary);
+            box-shadow: 0 0 20px rgba(255, 211, 42, 0.4);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #02080d;
+            padding: 60px 20px 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-links { margin-bottom: 30px; }
+        .footer-links a {
+            color: #777;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .footer-links a:hover { color: var(--secondary); }
+
+        .status-bar {
+            font-size: 0.8rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .dev-credit {
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: #444;
+        }
+
+        .dev-credit a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media(max-width: 600px) {
+            .member-card { height: 420px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>🌐 GEOID COMMUNITY</header>
+
+<div class="container">
+    <h2 class="section-title" data-aos="fade-down">Meet Our <span>Experts</span></h2>
+
+    <div class="community-grid">
+        <div class="member-card" data-aos="fade-up">
+            <img src="https://olympic-salmon-adctshbmjs.edgeone.app/Ceo.jpg" alt="Sukdeb Das">
+            <div class="overlay">
+                <div class="member-info">
+                    <span class="role">Founder & Mentor</span>
+                    <h3>Sukdeb Das</h3>
+                    <a href="sukdeb.html" class="connect-btn">
+                        <i class="fas fa-paper-plane"></i> Connect Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="member-card" id="developer-member" data-aos="fade-up" data-aos-delay="100">
+            <img src="https://major-purple-tzpeyhvbex-gio0zdmy0g.edgeone.dev/DEV%20.jpg" alt="Subhadip Satpati">
+            <div class="overlay">
+                <div class="member-info">
+                    <span class="role">Web Developer</span>
+                    <h3>Subhadip Satpati</h3>
+                    <a href="subha.html" class="connect-btn">
+                        <i class="fas fa-code"></i> Connect Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="member-card" data-aos="fade-up" data-aos-delay="200">
+            <img src="https://legitimate-magenta-oxhostjggp.edgeone.app/Susrita.jpg" alt="Susrita Giri">
+            <div class="overlay">
+                <div class="member-info">
+                    <span class="role">Academic Topper</span>
+                    <h3>Susrita Giri</h3>
+                    <a href="sus.html" class="connect-btn">
+                        <i class="fas fa-user-graduate"></i> View Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="member-card" data-aos="fade-up" data-aos-delay="300">
+            <img src="https://technical-emerald-m17ryypvki.edgeone.app/vola.jpg" alt="Sanjay Ranjit">
+            <div class="overlay">
+                <div class="member-info">
+                    <span class="role">Geo Scholar</span>
+                    <h3>Sanjay Ranjit</h3>
+                    <a href="vola.html" class="connect-btn">
+                        <i class="fas fa-link"></i> Connect Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="privacypolicy.html">Privacy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="status-bar">
+        🕒 <span id="footer-time">00:00:00</span> | Version 2.5
+    </div>
+
+    <div class="dev-credit">
+        DESIGNED & DEVELOPED BY <br>
+        <a href="#developer-member">SUBHADIP SATPATI</a>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+
+    function updateTime() {
+        const now = new Date();
+        document.getElementById('footer-time').innerText = now.toLocaleTimeString();
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+</script>
+
+</body>
+</html>

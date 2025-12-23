@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Founder Profile | GEOID CENTRE</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Serif+Bengali:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #b2f7ef, #0f4c3a);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header (Matched to Community Page) */
+header {
+  background: linear-gradient(135deg, #2ecc71, #1abc9c, #27ae60);
+  color: #fff;
+  text-align: center;
+  padding: 25px 0;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* Profile Container */
+.container {
+  width: 95%;
+  max-width: 1100px;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  flex: 1;
+}
+
+/* Premium Sidebar */
+.profile-card {
+  flex: 1;
+  min-width: 320px;
+  background: linear-gradient(to bottom, #ffffff, #f0fff4);
+  border-radius: 30px;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+  border: 2px solid #ffd32a; /* Premium Gold Border */
+  height: fit-content;
+}
+
+.profile-card img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #ffd32a;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.profile-card h2 {
+  color: #051929;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.profile-card .badge {
+  background: #ffd32a;
+  color: #051929;
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(255, 211, 42, 0.4);
+}
+
+/* Details Section */
+.profile-details {
+  flex: 2;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.content-box {
+  background: white;
+  border-radius: 30px;
+  padding: 35px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.content-box h3 {
+  color: #0f4c3a;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Mentor Message */
+.mentor-msg {
+  font-family: 'Noto Serif Bengali', serif;
+  font-style: italic;
+  color: #444;
+  line-height: 1.8;
+  position: relative;
+  padding-left: 20px;
+  border-left: 4px solid #ffd32a;
+}
+
+/* Details Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table td {
+  padding: 15px 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+table td:first-child {
+  font-weight: 700;
+  color: #27ae60;
+  width: 35%;
+}
+
+/* Footer (Matched to Home Page) */
+footer {
+  background: #051929;
+  color: white;
+  padding: 40px 20px 20px;
+  text-align: center;
+  margin-top: 50px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.footer-links a {
+  color: #b2f7ef;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.dev-credit {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.dev-credit a { color: #2ecc71; text-decoration: none; font-weight: 700; }
+
+/* Responsive */
+@media(max-width: 768px) {
+  .container { flex-direction: column; align-items: center; }
+  .profile-details, .profile-card { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<header>🎓 Founder & Mentor</header>
+
+<div class="container">
+  <div class="profile-card">
+    <img src="https://olympic-salmon-adctshbmjs.edgeone.app/Ceo.jpg" alt="Founder Photo">
+    <h2>Mr. Sukdeb Das</h2>
+    <span class="badge"><i class="fas fa-crown"></i> Founder CEO</span>
+    
+    <div style="margin: 20px 0; color: #555; font-size: 0.9rem;">
+        <p><i class="fas fa-map-marker-alt"></i> Contai, West Bengal</p>
+        <p><i class="fas fa-certificate"></i> 5+ Years Experience</p>
+    </div>
+
+    <div style="margin-top: 25px;">
+        <a href="#" style="color: #27ae60; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" style="color: #0a3d62; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-facebook"></i></a>
+        <a href="mailto:geoidstudycentre@gmail.com" style="color: #e74c3c; font-size: 1.5rem; margin: 0 10px;"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+
+  <div class="profile-details">
+    
+    <div class="content-box">
+        <h3><i class="fas fa-quote-left"></i> Mentor's Vision</h3>
+        <div class="mentor-msg">
+            "আমাদের লক্ষ্য কেবল পাঠ্যবইয়ের শিক্ষা নয়, বরং ভূগোলের প্রতিটি বিষয়কে বাস্তবের সাথে মিলিয়ে সহজভাবে ছাত্রছাত্রীদের কাছে পৌঁছে দেওয়া। সঠিক দিশা আর কঠোর পরিশ্রমই সাফল্যের একমাত্র চাবিকাঠি।"
+        </div>
+    </div>
+
+    <div class="content-box">
+        <h3><i class="fas fa-user-graduate"></i> Academic Details</h3>
+        <table>
+          <tr>
+            <td>Subject Focus</td>
+            <td>Geography (Specialist)</td>
+          </tr>
+          <tr>
+            <td>Designation</td>
+            <td>Founder & Senior Mentor</td>
+          </tr>
+          <tr>
+            <td>Email ID</td>
+            <td>geoidstudycentre@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Contact No</td>
+            <td>+91 8207084112</td>
+          </tr>
+          <tr>
+            <td>Expertise</td>
+            <td>Cartography, Geomorphology, Map Work</td>
+          </tr>
+          <tr>
+            <td>Total Students</td>
+            <td></td>
+          </tr>
+        </table>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="notice.html">Notice</a>
+    <a href="community.html">Community</a>
+    <a href="#">Enrollment</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <div style="font-size: 0.8rem; color: #888; margin: 15px 0;">
+    🕒 <span id="footer-time">00:00:00</span> | Official Founder Profile | Version 2.2.0
+  </div>
+
+  <div class="dev-credit">
+    <p>DESIGNED & DEVELOPED BY <br>
+    <a href="community.html#developer-member">SUBHADIP SATPATI</a></p>
+  </div>
+
+  <p style="margin-top:15px; font-size: 0.8rem; opacity: 0.5;">© 2025 GEOID STUDY CENTRE. All rights reserved.</p>
+</footer>
+
+<script>
+    function updateTime() {
+        const now = new Date();
+        document.getElementById('footer-time').innerText = now.toLocaleTimeString();
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+</script>
+
+</body>
+</html>
