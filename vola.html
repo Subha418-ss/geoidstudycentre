@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Honours Alumnus Profile | GEOID CENTRE</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Serif+Bengali:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #b2f7ef, #0f4c3a);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header (Site Standard) */
+header {
+  background: linear-gradient(135deg, #2ecc71, #1abc9c, #27ae60);
+  color: #fff;
+  text-align: center;
+  padding: 25px 0;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* Profile Container */
+.container {
+  width: 95%;
+  max-width: 1100px;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  flex: 1;
+}
+
+/* Sidebar (Emerald Theme) */
+.profile-card {
+  flex: 1;
+  min-width: 320px;
+  background: linear-gradient(to bottom, #ffffff, #f1f8e9);
+  border-radius: 30px;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+  border: 2px solid #27ae60;
+  height: fit-content;
+}
+
+.profile-card img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #27ae60;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(39, 174, 96, 0.3);
+}
+
+/* Status Indicator Update */
+.status-badge {
+    color: #d63031; /* Premium Red */
+    font-weight: 800;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-transform: uppercase;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ff7675;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 8px #d63031;
+}
+
+.profile-card h2 {
+  color: #051929;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.profile-card .badge {
+  background: linear-gradient(45deg, #1e8449, #27ae60);
+  color: #fff;
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(39, 174, 96, 0.4);
+}
+
+/* Details Section */
+.profile-details {
+  flex: 2;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.content-box {
+  background: white;
+  border-radius: 30px;
+  padding: 35px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  border-left: 5px solid #27ae60;
+}
+
+.content-box h3 {
+  color: #0f4c3a;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table td {
+  padding: 15px 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+table td:first-child {
+  font-weight: 700;
+  color: #1e8449;
+  width: 40%;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: #f1f8e9;
+    color: #1e8449;
+    border-radius: 50%;
+    margin: 0 8px;
+    transition: 0.3s;
+    text-decoration: none;
+    border: 1px solid #27ae60;
+}
+.social-btn:hover {
+    transform: translateY(-5px);
+    background: #27ae60;
+    color: white;
+}
+
+/* Footer (Site Standard) */
+footer {
+  background: #051929;
+  color: white;
+  padding: 40px 20px 20px;
+  text-align: center;
+  margin-top: 50px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.footer-links a { color: #b2f7ef; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
+
+.dev-credit a { color: #2ecc71; text-decoration: none; font-weight: 700; }
+
+@media(max-width: 768px) {
+  .container { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<header>📖 Higher Studies Alumni</header>
+
+<div class="container">
+  <div class="profile-card">
+    <img src="https://technical-emerald-m17ryypvki.edgeone.app/vola.jpg" alt="Honours Student Photo">
+    
+    <div class="status-badge">
+        <span class="status-dot"></span> Currently not active
+    </div>
+
+    <h2>Sanjay Ranjit</h2>
+    <span class="badge"><i class="fas fa-book-reader"></i> GEOGRAPHY HONOURS</span>
+    
+    <div style="margin: 20px 0; color: #555; font-size: 0.9rem;">
+        <p><i class="fas fa-university"></i> Karnataka University</p>
+        <p><i class="fas fa-user-check"></i> Verified Alumni Member</p>
+    </div>
+
+    <div class="social-links">
+        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:#" class="social-btn"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+
+  <div class="profile-details">
+    <div class="content-box">
+        <h3><i class="fas fa-pen-nib"></i> Alumnus Reflection</h3>
+        <p style="font-family: 'Noto Serif Bengali', serif; color: #444; line-height: 1.8; font-style: italic;">
+            "জিওয়েড স্টাডি সেন্টারে কাটানো সময়গুলো আমার শিক্ষা জীবনের ভিত মজবুত করেছে। বর্তমানে কর্ণাটক ইউনিভার্সিটিতে উচ্চশিক্ষার ক্ষেত্রে এখানকার দেওয়া কনসেপ্টগুলো আজও খুব কাজে লাগে।"
+        </p>
+    </div>
+
+    <div class="content-box">
+        <h3><i class="fas fa-history"></i> Academic Background</h3>
+        <table>
+          <tr>
+            <td>Membership Status</td>
+            <td>Ex-Student (Premium Alumnus)</td>
+          </tr>
+          <tr>
+            <td>Current University</td>
+            <td>Karnataka University</td>
+          </tr>
+          <tr>
+            <td>Account Status</td>
+            <td style="color: #d63031; font-weight: 700;">Currently not active</td>
+          </tr>
+          <tr>
+            <td>Specialization</td>
+            <td>Geography Honours</td>
+          </tr>
+        </table>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="community.html">Community</a>
+    <a href="noticeboard.html">Notice</a>
+    <a href="#">Resources</a>
+  </div>
+  <div style="font-size: 0.8rem; color: #888; margin: 15px 0;">
+    🕒 <span id="footer-time">00:00:00</span> | Version 2.4.6
+  </div>
+  <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; padding-top: 20px;">
+    <p style="font-size: 0.85rem; color: #bdc3c7;">
+        DESIGNED & DEVELOPED BY <br>
+        <a href="community.html#developer-member" style="color: #2ecc71; text-decoration: none; font-weight: 700;">SUBHADIP SATPATI</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+    function updateTime() {
+        const now = new Date();
+        document.getElementById('footer-time').innerText = now.toLocaleTimeString();
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+</script>
+
+</body>
+</html>
