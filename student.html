@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Community | GEOID STUDY CENTRE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05070a;
+            --card-bg: #0d1117;
+            --accent: #ff0055; 
+            --accent-glow: rgba(255, 0, 85, 0.4);
+            --text: #e6edf3;
+            --text-dim: #8b949e;
+            --border: rgba(255, 255, 255, 0.05);
+            --glass: rgba(255, 255, 255, 0.02);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Full Screen Chat Layout */
+        .chat-container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        /* Sidebar - Enhanced Look */
+        .chat-sidebar {
+            background: var(--card-bg);
+            border-right: 1px solid var(--border);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        .chat-sidebar h2 { 
+            color: #fff; 
+            font-size: 1.5rem; 
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .chat-sidebar h2 i { color: var(--accent); }
+
+        .rules-container {
+            margin-top: 30px;
+            background: var(--glass);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+        }
+
+        .rules { font-size: 0.85rem; color: var(--text-dim); }
+        .rules p { margin-bottom: 15px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+        .rules li { margin-bottom: 12px; list-style: none; display: flex; align-items: flex-start; gap: 10px; }
+        .rules li i { color: var(--accent); font-size: 0.9rem; margin-top: 3px; }
+
+        /* Main Chat Area */
+        .chat-main {
+            display: flex;
+            flex-direction: column;
+            background: radial-gradient(circle at top right, rgba(255,0,85,0.05), transparent);
+            position: relative;
+        }
+
+        .chat-header {
+            padding: 20px 40px;
+            background: rgba(13, 17, 23, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status { font-size: 0.8rem; color: #2ecc71; display: flex; align-items: center; gap: 8px; font-weight: 500; }
+        .dot { 
+            height: 10px; width: 10px; background: #2ecc71; border-radius: 50%; 
+            display: inline-block; box-shadow: 0 0 10px #2ecc71;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Iframe styling */
+        .chat-box-area {
+            flex-grow: 1;
+            padding: 20px;
+            background: transparent;
+        }
+
+        #live-chat-iframe {
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: var(--card-bg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Premium Footer */
+        .chat-footer {
+            background: var(--card-bg);
+            padding: 15px 40px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-left: 20px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--accent); }
+
+        .back-btn {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        
+        .back-btn:hover { color: var(--accent); transform: translateX(-5px); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .chat-sidebar { display: none; }
+            .chat-container { grid-template-columns: 1fr; }
+            .chat-footer { flex-direction: column; gap: 10px; text-align: center; }
+            .footer-links { margin-top: 5px; }
+            .footer-links a { margin: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <aside class="chat-sidebar">
+            <a href="index.html" class="back-btn"><i class="fas fa-long-arrow-alt-left"></i> EXIT PORTAL</a>
+            
+            <h2><i class="fas fa-circle-notch fa-spin"></i> Live Hub</h2>
+            <p style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.5;">Connect with peers and teachers in real-time. Share knowledge instantly.</p>
+            
+            <div class="rules-container">
+                <div class="rules">
+                    <p>Community Guidelines</p>
+                    <ul>
+                        <li><i class="fas fa-shield-alt"></i> No offensive language allowed.</li>
+                        <li><i class="fas fa-book"></i> Stick to academic discussions.</li>
+                        <li><i class="fas fa-ban"></i> No spamming or external links.</li>
+                        <li><i class="fas fa-user-check"></i> Respect everyone's privacy.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: auto; padding-top: 20px;">
+                <div style="font-size: 0.7rem; color: var(--accent); font-weight: bold; letter-spacing: 1px;">ENCRYPTED CHANNEL</div>
+            </div>
+        </aside>
+
+        <main class="chat-main">
+            <header class="chat-header">
+                <div>
+                    <h3 style="color: #fff; letter-spacing: 1px;">Geoid Student Room</h3>
+                    <div class="status"><span class="dot"></span> 24 Members Online</div>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <i class="fas fa-search" style="color: var(--text-dim); cursor: pointer;"></i>
+                    <i class="fas fa-ellipsis-v" style="color: var(--text-dim); cursor: pointer;"></i>
+                </div>
+            </header>
+
+            <div class="chat-box-area">
+                <iframe src="https://www5.cbox.ws/box/?boxid=960364&boxtag=gFtlZa" 
+                        id="live-chat-iframe" 
+                        allow="autoplay; payment; fullscreen; microphone; focus-lock; clipboard-read; clipboard-write">
+                </iframe>
+            </div>
+
+            <footer class="chat-footer">
+                <div>© 2025 <span style="color: var(--accent); font-weight: 600;">GEOID STUDY CENTRE</span>. All rights reserved.</div>
+                <div class="footer-links">
+                    <a href="#">Support</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Portal Home</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+</body>
+</html>
