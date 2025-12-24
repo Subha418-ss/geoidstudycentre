@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEOID Study Centre | Resources</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Serif+Bengali:wght@400;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* Modern Dark Variables */
+:root {
+  --bg: #0b0e14;
+  --card-bg: #161b22;
+  --accent: #00d2ff; /* Resources Theme: Neon Blue */
+  --accent-glow: rgba(0, 210, 255, 0.3);
+  --text: #e6edf3;
+  --text-dim: #8b949e;
+  --nav-bg: rgba(11, 14, 20, 0.9);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", "Noto Serif Bengali", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* Background Animation */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 50%, #1a1f2e 0%, #0b0e14 100%);
+  z-index: -1;
+}
+
+/* Header Section */
+.header {
+  padding: 50px 20px;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(0, 210, 255, 0.1), transparent);
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  letter-spacing: 4px;
+  color: var(--accent);
+  text-shadow: 0 0 15px var(--accent-glow);
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-family: 'Noto Serif Bengali', serif;
+  font-style: italic;
+  color: var(--text-dim);
+  font-size: 1.1rem;
+}
+
+/* Sticky Navigation */
+.nav {
+  position: sticky;
+  top: 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(15px);
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: 0.3s;
+  letter-spacing: 1px;
+}
+
+.nav a:hover {
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* Main Container */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  display: grid;
+  gap: 30px;
+}
+
+/* Section/Card Styling */
+.section {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 35px;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section:hover {
+  border-color: var(--accent);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.section h2 {
+  color: var(--accent);
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.section h2 i {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+/* List Styling */
+.section ul {
+  list-style: none;
+}
+
+.section ul li {
+  padding: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section ul li:last-child {
+  border-bottom: none;
+}
+
+.section ul li:hover {
+  background: rgba(255,255,255,0.02);
+  padding-left: 20px;
+}
+
+.section a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  width: 100%;
+  display: block;
+}
+
+.section a::before {
+  content: '→';
+  margin-right: 10px;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* Empty State Styling */
+.empty-state {
+  color: var(--text-dim);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 60px 20px;
+  background: #0d1117;
+  color: var(--text-dim);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: 50px;
+}
+
+.footer span {
+  color: var(--accent);
+  font-family: 'Fira Code', monospace;
+}
+
+@media (max-width: 600px) {
+  .nav { gap: 12px; }
+  .nav a { font-size: 0.7rem; }
+  .header h1 { font-size: 1.6rem; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>GEOID STUDY CENTRE</h1>
+  <p>"শিক্ষা আনে চেতনা, চেতনা আনে বিপ্লব"</p>
+</div>
+
+<div class="nav">
+  <a href="index.html">Home</a>
+  <a href="#resource">Resource</a>
+  <a href="#study-material">Materials</a>
+  <a href="#syllabus">Syllabus</a>
+  <a href="class.html">Free Class</a>
+</div>
+
+<div class="container">
+
+  <div class="section" id="resource">
+    <h2><i class="fas fa-folder-open"></i> Resource Hub</h2>
+    <ul>
+      <li><a href="#question">Previous Year Question Papers</a></li>
+      <li><a href="#">Academic Roadmaps</a></li>
+    </ul>
+  </div>
+
+  <div class="section" id="study-material">
+    <h2><i class="fas fa-book"></i> Study Material</h2>
+    <p class="empty-state">System.Status: [Coming Soon...]</p>
+    <ul>
+      <li><a href="#">Digital Notes (Wait List)</a></li>
+    </ul>
+  </div>
+
+  <div class="section" id="syllabus">
+    <h2><i class="fas fa-file-pdf"></i> Academic Syllabus</h2>
+    <ul>
+      <li><a href="https://drive.google.com/file/d/1Ze604UZ7TOByjzKFYX1V4q3qr3Jtko0X/view">Madhyamik Geography Syllabus</a></li>
+      <li><a href="https://drive.google.com/file/d/173fkt6tGAuwvcR8sgZ4Gw3rdrqoxeiRl/view">Class 11 (Semester-1) Pattern</a></li>
+      <li><a href="https://drive.google.com/file/d/1xcbtPhHSTu7sZr4WC4IiHHAVrVfn1ik3/view">Class 9 Integrated Syllabus</a></li>
+    </ul>
+  </div>
+
+  <div class="section" id="free-class">
+    <h2><i class="fas fa-video"></i> Digital Classroom</h2>
+    <ul>
+      <li><a href="#">Introductory Session for Beginners</a></li>
+      <li><a href="#">Weekly Q&A with Senior Mentors</a></li>
+      <li style="color: var(--text-dim); font-size: 0.8rem;">
+        <i class="fas fa-info-circle"></i> Zoom / Google Meet Access links provided via WhatsApp.
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>© 2025 GEOID STUDY CENTRE | <span>MADE IN INDIA</span></p>
+  <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.5;">Secure Cloud Access Enabled.</p>
+</div>
+
+<script>
+    // Reveal animation on scroll
+    const sections = document.querySelectorAll('.section');
+    const revealSections = () => {
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            if (sectionTop < window.innerHeight - 50) {
+                section.classList.add('visible');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', revealSections);
+    window.addEventListener('load', revealSections); // Run once on load
+</script>
+
+</body>
+</html>
