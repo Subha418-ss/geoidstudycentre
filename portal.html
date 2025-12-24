@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEOID STUDY CENTRE - Student Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0e14;
+            --card-bg: #161b22;
+            --accent: #ff0055; 
+            --accent-glow: rgba(255, 0, 85, 0.3);
+            --text: #e6edf3;
+            --text-dim: #8b949e;
+            --border: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+        /* --- Header --- */
+        .header {
+            background: rgba(11, 14, 20, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1.5rem 2rem;
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-top {
+            display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; margin-bottom: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem; font-weight: bold;
+            color: var(--accent); text-shadow: 0 0 15px var(--accent-glow);
+            letter-spacing: 2px;
+        }
+
+        .location { font-size: 0.9rem; color: var(--text-dim); }
+
+        .nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+        .nav a {
+            color: var(--text-dim); text-decoration: none; font-weight: 500;
+            padding: 0.6rem 1.2rem; border-radius: 25px; transition: 0.3s;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
+        }
+        .nav a:hover { color: #fff; background: var(--accent); border-color: var(--accent); }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 6rem 2rem; text-align: center;
+            background: linear-gradient(to bottom, rgba(255,0,85,0.1), transparent);
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 0.5rem; color: #fff; letter-spacing: 2px; }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); }
+
+        /* --- Grid Content --- */
+        .container { max-width: 1300px; margin: 0 auto; padding: 4rem 2rem; }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .card-icon {
+            width: 60px; height: 60px;
+            background: rgba(255, 0, 85, 0.1);
+            border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
+        .card p { color: var(--text-dim); margin-bottom: 25px; font-size: 0.95rem; }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px var(--accent-glow);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        /* --- Timeline Section --- */
+        .timeline-box {
+            background: linear-gradient(135deg, rgba(255,0,85,0.05), var(--card-bg));
+            border-radius: 30px; padding: 50px; text-align: center;
+            margin-top: 60px; border: 1px solid rgba(255,0,85,0.2);
+        }
+
+        .dates-flex {
+            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 30px;
+        }
+
+        .date-item h4 { color: var(--accent); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 5px; }
+        .date-item p { font-size: 1.4rem; font-weight: 700; color: #fff; }
+
+        /* --- Footer --- */
+        .footer {
+            background: #05070a; padding: 4rem 2rem; border-top: 1px solid var(--border);
+            text-align: center; margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            max-width: 1100px; margin: 0 auto 40px; gap: 40px;
+        }
+
+        .footer-col h3 { color: var(--accent); margin-bottom: 20px; font-size: 1.1rem; }
+        .footer-col a { display: block; color: var(--text-dim); text-decoration: none; margin-bottom: 10px; font-size: 0.9rem; }
+        .footer-col a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .container { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-top">
+            <div class="logo">GEOID STUDY CENTRE</div>
+            <div class="location">Contai, Purba Medinipur, WB</div>
+        </div>
+        <nav class="nav">
+            <a href="#">🏠 Home</a>
+            <a href="#">📚 Admission</a>
+            <a href="#">🎓 Student Portal</a>
+            <a href="#">📞 Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>STUDENT PORTAL</h1>
+        <p>Welcome to GEOID Study Centre - Your Gateway to Academic Excellence</p>
+    </section>
+
+    <div class="container">
+        <div class="main-grid">
+            
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+                <h3>Admission Guideline</h3>
+                <p>Admission Criteria & Guidelines for the academic session 2025-2026. Review all requirements before applying.</p>
+                <a href="#" class="btn">View Guide →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-wallet"></i></div>
+                <h3>Fees Structure</h3>
+                <p>Complete class-wise fees breakdown including admission fees, monthly tuition, and resource costs.</p>
+                <a href="#" class="btn">Check Fees</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-user-graduate"></i></div>
+                <h3>Admission Portal</h3>
+                <p>Exclusive digital access for online applications, faculty management and new student registrations.</p>
+                <a href="form.html" class="btn">Enter Portal</a>
+            </div>
+
+        </div>
+
+        <div class="timeline-box">
+            <h2 style="font-size: 2rem; color: #fff;"><i class="fas fa-calendar-check" style="color: var(--accent);"></i> Important Dates</h2>
+            <div class="dates-flex">
+                <div class="date-item">
+                    <h4>Registration Starts</h4>
+                    <p>23 Dec 2025</p>
+                </div>
+                <div style="width: 2px; height: 50px; background: var(--border);"></div>
+                <div class="date-item">
+                    <h4>Registration Ends</h4>
+                    <p>10 Jan 2026</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>📧 Email</h3>
+                <p style="color: var(--text-dim);">geoidstudycentre@gmail.com</p>
+            </div>
+            <div class="footer-col">
+                <h3>📞 Contact</h3>
+                <p style="color: var(--text-dim);">Contai, Purba Medinipur<br>West Bengal, 721401</p>
+            </div>
+            <div class="footer-col">
+                <h3>🔗 Quick Links</h3>
+                <a href="#">Academic Calendar</a>
+                <a href="#">Holiday List</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid var(--border); padding-top: 30px; color: #555; font-size: 0.8rem;">
+            Developed by Subhadip Satpati | © 2025 GEOID STUDY CENTRE
+        </div>
+    </footer>
+
+</body>
+</html>

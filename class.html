@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom | GEOID CENTRE</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Serif+Bengali:wght@400;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --bg: #0b0e14;
+  --card-bg: #161b22;
+  --accent: #ff0055; 
+  --accent-glow: rgba(255, 0, 85, 0.3);
+  --live-green: #00ff88;
+  --text: #e6edf3;
+  --text-dim: #8b949e;
+  --nav-bg: rgba(11, 14, 20, 0.9);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", "Noto Serif Bengali", sans-serif; }
+body { background-color: var(--bg); color: var(--text); min-height: 100vh; }
+
+/* Header */
+header {
+  padding: 25px 0; text-align: center;
+  background: var(--nav-bg); backdrop-filter: blur(15px);
+  position: sticky; top: 0; z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+header h1 { font-size: 1.4rem; letter-spacing: 3px; color: var(--accent); text-shadow: 0 0 15px var(--accent-glow); }
+
+.container { width: 90%; max-width: 1100px; margin: 40px auto; }
+
+h2.section-title { margin-bottom: 30px; color: var(--accent); display: flex; align-items: center; gap: 10px; font-size: 1.5rem; }
+
+/* Recorded Lectures Section */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 60px; }
+
+.video-card { background: var(--card-bg); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; cursor: pointer; position: relative; }
+.video-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
+
+.thumb-box { position: relative; aspect-ratio: 16/9; background: #000; overflow: hidden; }
+.thumb-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; }
+.video-card:hover .thumb-box img { opacity: 0.9; transform: scale(1.1); }
+
+.drive-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3rem; color: #fff; opacity: 0.8; }
+
+.video-info { padding: 20px; }
+.video-info h3 { font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
+.tag { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 5px; }
+
+/* --- LIVE CLASS SECTION (UPDATED) --- */
+.live-schedule-box {
+  background: linear-gradient(135deg, rgba(255, 0, 85, 0.05), rgba(22, 27, 34, 1));
+  border: 1px solid rgba(255, 0, 85, 0.2);
+  border-radius: 24px; padding: 45px; text-align: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+/* Pulsing Status Label */
+.status-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; font-weight: 700; padding: 5px 15px;
+  border-radius: 50px; margin-bottom: 15px;
+}
+
+.status-offline { background: rgba(255, 255, 255, 0.1); color: var(--text-dim); }
+.status-online { background: rgba(0, 255, 136, 0.15); color: var(--live-green); box-shadow: 0 0 15px rgba(0, 255, 136, 0.2); }
+
+.pulse-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: currentColor; animation: pulse-anim 1.5s infinite;
+}
+
+@keyframes pulse-anim {
+  0% { transform: scale(0.9); opacity: 1; }
+  70% { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(0.9); opacity: 0; }
+}
+
+.upcoming-badge {
+  display: inline-block; background: rgba(255, 255, 255, 0.03);
+  padding: 12px 25px; border-radius: 12px;
+  border: 1px dashed var(--accent); color: #fff;
+  font-family: 'Fira Code', monospace; margin-bottom: 30px;
+}
+
+/* Unlock Button Styles */
+.btn-live {
+  padding: 16px 45px; border-radius: 50px; text-decoration: none;
+  font-weight: 700; display: inline-flex; align-items: center; gap: 12px;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.locked-style { background: #222; color: #666; cursor: not-allowed; border: 1px solid #333; }
+.active-style { 
+  background: var(--accent); color: #fff; cursor: pointer;
+  box-shadow: 0 10px 25px var(--accent-glow);
+}
+.active-style:hover { transform: translateY(-5px); box-shadow: 0 15px 35px var(--accent-glow); }
+
+/* Modal */
+.modal {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.95); display: none;
+  justify-content: center; align-items: center; z-index: 2000;
+  backdrop-filter: blur(10px);
+}
+.modal-content { width: 90%; max-width: 900px; aspect-ratio: 16/9; position: relative; }
+.modal-content iframe { width: 100%; height: 100%; border-radius: 15px; border: 1px solid var(--accent); }
+.close-modal { position: absolute; top: -50px; right: 0; color: #fff; font-size: 2.5rem; cursor: pointer; }
+
+footer {
+  margin-top: 80px; padding: 60px 20px; background: #0d1117; text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer-links a { color: var(--text-dim); text-decoration: none; margin: 0 15px; font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>GEOID CLOUD CLASSROOM</h1>
+</header>
+
+<div class="container">
+
+  <h2 class="section-title"><i class="fab fa-google-drive"></i> Drive Lectures</h2>
+  <div class="video-grid">
+    
+    <div class="video-card" onclick="openVideo('https://drive.google.com/file/d/19MVJ1SjhC1dT-a98IKeAs4gLfmfbFEbs/preview')">
+      <div class="thumb-box">
+        <img src="https://ik.imagekit.io/8v5m0fw9z/Red%20and%20Black%20Retro%20Landscape%20YouTube%20Thumbnail%20background.png" alt="Lecture">
+        <div class="drive-play"><i class="fas fa-play-circle"></i></div>
+      </div>
+      <div class="video-info">
+        <span class="tag"><i class="fab fa-google-drive"></i> Cloud Video</span>
+        <h3>ভারতের নাম কয়টি ও কী কী? - CLASS 10</h3>
+      </div>
+    </div>
+
+    <div class="video-card" style="opacity: 0.5; cursor: default;">
+      <div class="thumb-box">
+        <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800" alt="Lecture">
+        <div class="drive-play"><i class="fas fa-lock"></i></div>
+      </div>
+      <div class="video-info">
+        <span class="tag"><i class="fas fa-database"></i> Upcoming</span>
+        <h3>NEXT LECTURE COMING SOON...</h3>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="section-title"><i class="fas fa-video"></i> Live Classroom</h2>
+  <div class="live-schedule-box">
+    
+    <div id="live-status" class="status-label status-offline">
+       <span id="status-text">OFFLINE</span>
+    </div>
+
+    <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Weekly Interaction Session</h3>
+    <p style="color: var(--text-dim); margin-bottom: 25px; font-size: 0.9rem;">
+      সরাসরি ক্লাসে যোগ দিতে এবং ডাউট ক্লিয়ার করতে নিচের বাটনটি ব্যবহার করুন।
+    </p>
+    
+    <div class="upcoming-badge">
+      <i class="far fa-clock"></i> Next Class: Sunday, 10:30 AM
+    </div>
+    
+    <br>
+
+    <a href="YOUR_GOOGLE_MEET_LINK" id="live-btn" class="btn-live locked-style" onclick="return checkLive(event)">
+      <i id="btn-icon" class="fas fa-lock"></i> 
+      <span id="btn-text">CLASS NOT STARTED</span>
+    </a>
+
+    <p style="margin-top: 25px; font-size: 0.75rem; color: var(--text-dim); font-style: italic;">
+      * ক্লাসের ১০ মিনিট আগে জয়েন বাটনটি আনলক করা হবে।
+    </p>
+  </div>
+
+</div>
+
+<div class="modal" id="videoModal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeVideo()">&times;</span>
+    <iframe id="videoPlayer" src="" allow="autoplay; fullscreen"></iframe>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="#">Resources</a>
+    <a href="#">Notice</a>
+  </div>
+  <p style="margin-top: 30px; font-size: 0.8rem; color: var(--text-dim);">
+    © 2025 GEOID STUDY CENTRE | POWERED BY SUBHADIP SATPATI
+  </p>
+</footer>
+
+<script>
+  // --- ভিডিও প্লেয়ার লজিক ---
+  const modal = document.getElementById('videoModal');
+  const player = document.getElementById('videoPlayer');
+
+  function openVideo(link) {
+    player.src = link;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeVideo() {
+    modal.style.display = 'none';
+    player.src = '';
+    document.body.style.overflow = 'auto';
+  }
+
+  window.onclick = (e) => { if(e.target == modal) closeVideo(); }
+
+  // --- লাইভ ক্লাস আনলক লজিক (ADMIN CONTROL) ---
+  
+  // ক্লাস শুরুর সময় আপনি এই ভ্যারিয়েবলটি true করে দেবেন
+  let isClassLive = true; 
+
+  const liveBtn = document.getElementById('live-btn');
+  const statusLabel = document.getElementById('live-status');
+  const btnText = document.getElementById('btn-text');
+  const btnIcon = document.getElementById('btn-icon');
+  const statusText = document.getElementById('status-text');
+
+  function toggleLive(status) {
+    if(status) {
+      isClassLive = true;
+      liveBtn.classList.remove('locked-style');
+      liveBtn.classList.add('active-style');
+      statusLabel.classList.remove('status-offline');
+      statusLabel.classList.add('status-online');
+      statusLabel.innerHTML = '<div class="pulse-dot"></div> LIVE NOW';
+      btnText.innerText = "JOIN LIVE CLASS NOW";
+      btnIcon.className = "fas fa-external-link-alt";
+    } else {
+      isClassLive = true;
+      liveBtn.classList.add('locked-style');
+      liveBtn.classList.remove('active-style');
+      // Default offline state remains
+    }
+  }
+
+  function checkLive(e) {
+    if(!isClassLive) {
+      e.preventDefault();
+      alert("দুঃখিত, ক্লাসটি এখনো শুরু হয়নি। দয়া করে নির্দিষ্ট সময়ে চেষ্টা করুন।");
+      return false;
+    }
+  }
+
+  // পরীক্ষা করার জন্য: ব্রাউজার কনসোলে toggleLive(true) লিখলে বাটন আনলক হবে।
+</script>
+
+</body>
+</html>
