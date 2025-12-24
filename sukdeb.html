@@ -4,10 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Founder Profile | GEOID CENTRE</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Serif+Bengali:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Serif+Bengali:wght@400;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-/* Global Styles */
+/* Modern Dark Variables */
+:root {
+  --bg: #0b0e14;
+  --card-bg: #161b22;
+  --accent: #2ecc71; /* Founder Theme: Emerald Green */
+  --accent-glow: rgba(46, 204, 113, 0.3);
+  --text: #e6edf3;
+  --text-dim: #8b949e;
+  --gold: #ffd32a;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -17,238 +27,273 @@
 }
 
 body {
-  background: linear-gradient(135deg, #b2f7ef, #0f4c3a);
+  background-color: var(--bg);
+  color: var(--text);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  overflow-x: hidden;
 }
 
-/* Header (Matched to Community Page) */
+/* Background Depth */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 50%, #1a1f2e 0%, #0b0e14 100%);
+  z-index: -1;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes crownPulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 2px var(--gold)); }
+  50% { transform: scale(1.1); filter: drop-shadow(0 0 10px var(--gold)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 2px var(--gold)); }
+}
+
+/* Header */
 header {
-  background: linear-gradient(135deg, #2ecc71, #1abc9c, #27ae60);
-  color: #fff;
+  padding: 35px 0;
   text-align: center;
-  padding: 25px 0;
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  background: rgba(11, 14, 20, 0.85);
+  backdrop-filter: blur(15px);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Profile Container */
+header h1 {
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 0 15px var(--accent-glow);
+}
+
 .container {
-  width: 95%;
-  max-width: 1100px;
-  margin: 50px auto;
-  display: flex;
-  flex-wrap: wrap;
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 350px 1fr;
   gap: 30px;
-  flex: 1;
+  animation: slideUp 1s ease-out;
 }
 
-/* Premium Sidebar */
+/* Profile Card Styling */
 .profile-card {
-  flex: 1;
-  min-width: 320px;
-  background: linear-gradient(to bottom, #ffffff, #f0fff4);
-  border-radius: 30px;
-  padding: 40px 20px;
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 40px 30px;
   text-align: center;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
-  border: 2px solid #ffd32a; /* Premium Gold Border */
+  border: 1px solid rgba(255, 211, 42, 0.2); /* Soft Gold Border */
   height: fit-content;
+  transition: 0.4s;
+  position: relative;
 }
 
-.profile-card img {
-  width: 200px;
-  height: 200px;
+.profile-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-5px);
+}
+
+.img-container {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin: 0 auto 25px;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 6px solid #ffd32a;
-  margin-bottom: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  border: 4px solid var(--gold);
+  padding: 5px;
 }
 
-.profile-card h2 {
-  color: #051929;
-  font-size: 1.8rem;
-  margin-bottom: 5px;
+.crown-icon {
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  background: var(--gold);
+  color: #000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 15px rgba(255, 211, 42, 0.4);
+  animation: crownPulse 2s infinite;
 }
 
-.profile-card .badge {
-  background: #ffd32a;
-  color: #051929;
+.profile-card h2 { font-size: 1.7rem; margin-bottom: 8px; color: #fff; }
+
+.badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #000;
+  background: var(--gold);
   padding: 6px 20px;
   border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 700;
   display: inline-block;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 10px rgba(255, 211, 42, 0.4);
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(255, 211, 42, 0.2);
 }
 
-/* Details Section */
-.profile-details {
-  flex: 2;
-  min-width: 350px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
+/* Detail Box Styling */
 .content-box {
-  background: white;
-  border-radius: 30px;
+  background: var(--card-bg);
+  border-radius: 24px;
   padding: 35px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+
+.content-box:hover {
+  background: #1c2128;
+  border-color: var(--accent);
 }
 
 .content-box h3 {
-  color: #0f4c3a;
-  margin-bottom: 20px;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 25px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 /* Mentor Message */
 .mentor-msg {
   font-family: 'Noto Serif Bengali', serif;
   font-style: italic;
-  color: #444;
-  line-height: 1.8;
-  position: relative;
+  color: var(--text-dim);
+  line-height: 1.9;
+  font-size: 1.1rem;
+  border-left: 3px solid var(--gold);
   padding-left: 20px;
-  border-left: 4px solid #ffd32a;
 }
 
-/* Details Table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+/* Table Styling */
+table { width: 100%; border-collapse: collapse; }
+table td { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; }
+table td:first-child { color: var(--text-dim); font-weight: 400; width: 35%; }
+table td:last-child { color: var(--text); font-weight: 600; }
 
-table td {
-  padding: 15px 10px;
-  border-bottom: 1px solid #eee;
-  font-size: 0.95rem;
-}
-
-table td:first-child {
-  font-weight: 700;
-  color: #27ae60;
-  width: 35%;
-}
-
-/* Footer (Matched to Home Page) */
-footer {
-  background: #051929;
-  color: white;
-  padding: 40px 20px 20px;
-  text-align: center;
-  margin-top: 50px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 25px;
-}
-
-.footer-links a {
-  color: #b2f7ef;
+/* Social Icons */
+.social-links { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+.social-btn {
+  width: 45px; height: 45px;
+  background: #1c2128;
+  color: var(--text-dim);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
   text-decoration: none;
-  font-size: 0.9rem;
   transition: 0.3s;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-.dev-credit {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  margin-top: 20px;
-  padding-top: 20px;
+.social-btn:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(255, 211, 42, 0.2);
 }
 
-.dev-credit a { color: #2ecc71; text-decoration: none; font-weight: 700; }
+/* Footer */
+footer {
+  text-align: center;
+  padding: 60px 20px;
+  background: #0d1117;
+  color: var(--text-dim);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
 
-/* Responsive */
-@media(max-width: 768px) {
-  .container { flex-direction: column; align-items: center; }
-  .profile-details, .profile-card { width: 100%; }
+.footer-links { margin-bottom: 30px; }
+.footer-links a { color: var(--text-dim); text-decoration: none; margin: 0 12px; font-size: 0.85rem; transition: 0.3s; }
+.footer-links a:hover { color: var(--accent); }
+
+.footer-time {
+  font-family: 'Fira Code', monospace;
+  color: var(--gold);
+  font-size: 1rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.dev-credit { 
+  margin-top: 25px; 
+  padding-top: 25px; 
+  border-top: 1px solid rgba(255,255,255,0.05); 
+}
+.dev-credit a { color: var(--accent); text-decoration: none; font-weight: 700; }
+
+@media (max-width: 850px) {
+  .container { grid-template-columns: 1fr; }
+  .profile-card { width: 100%; }
 }
 </style>
 </head>
 <body>
 
-<header>🎓 Founder & Mentor</header>
+<header>
+  <h1>&lt; FOUNDER & MENTOR /&gt;</h1>
+</header>
 
 <div class="container">
-  <div class="profile-card">
-    <img src="https://olympic-salmon-adctshbmjs.edgeone.app/Ceo.jpg" alt="Founder Photo">
+  <aside class="profile-card">
+    <div class="crown-icon"><i class="fas fa-crown"></i></div>
+    <div class="img-container">
+      <img src="https://olympic-salmon-adctshbmjs.edgeone.app/Ceo.jpg" alt="Founder Photo">
+    </div>
     <h2>Mr. Sukdeb Das</h2>
-    <span class="badge"><i class="fas fa-crown"></i> Founder CEO</span>
+    <div class="badge">Founder & CEO</div>
     
-    <div style="margin: 20px 0; color: #555; font-size: 0.9rem;">
-        <p><i class="fas fa-map-marker-alt"></i> Contai, West Bengal</p>
-        <p><i class="fas fa-certificate"></i> 5+ Years Experience</p>
+    <div style="margin: 20px 0; text-align: left; padding: 0 10px;">
+        <p style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 12px;">
+            <i class="fas fa-map-marker-alt" style="color: var(--gold); width: 20px;"></i> Contai, West Bengal
+        </p>
+        <p style="font-size: 0.9rem; color: var(--text-dim);">
+            <i class="fas fa-certificate" style="color: var(--gold); width: 20px;"></i> 5+ Years Experience
+        </p>
     </div>
 
-    <div style="margin-top: 25px;">
-        <a href="#" style="color: #27ae60; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" style="color: #0a3d62; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-facebook"></i></a>
-        <a href="mailto:geoidstudycentre@gmail.com" style="color: #e74c3c; font-size: 1.5rem; margin: 0 10px;"><i class="fas fa-envelope"></i></a>
+    <div class="social-links">
+      <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+      <a href="mailto:geoidstudycentre@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
     </div>
-  </div>
+  </aside>
 
-  <div class="profile-details">
-    
+  <main>
     <div class="content-box">
-        <h3><i class="fas fa-quote-left"></i> Mentor's Vision</h3>
+        <h3><i class="fas fa-quote-left"></i> Visionary Mission</h3>
         <div class="mentor-msg">
-            "আমাদের লক্ষ্য কেবল পাঠ্যবইয়ের শিক্ষা নয়, বরং ভূগোলের প্রতিটি বিষয়কে বাস্তবের সাথে মিলিয়ে সহজভাবে ছাত্রছাত্রীদের কাছে পৌঁছে দেওয়া। সঠিক দিশা আর কঠোর পরিশ্রমই সাফল্যের একমাত্র চাবিকাঠি।"
+            "আমাদের লক্ষ্য কেবল পাঠ্যবইয়ের শিক্ষা নয়, বরং ভূগোলের প্রতিটি বিষয়কে বাস্তবের সাথে মিলিয়ে সহজভাবে ছাত্রছাত্রীদের কাছে পৌঁছে দেওয়া। সঠিক দিশা আর কঠোর পরিশ্রমই সাফল্যের একমাত্র চাবিকাঠি।"
         </div>
     </div>
 
     <div class="content-box">
-        <h3><i class="fas fa-user-graduate"></i> Academic Details</h3>
+        <h3><i class="fas fa-user-graduate"></i> Academic Dossier</h3>
         <table>
-          <tr>
-            <td>Subject Focus</td>
-            <td>Geography (Specialist)</td>
-          </tr>
-          <tr>
-            <td>Designation</td>
-            <td>Founder & Senior Mentor</td>
-          </tr>
-          <tr>
-            <td>Email ID</td>
-            <td>geoidstudycentre@gmail.com</td>
-          </tr>
-          <tr>
-            <td>Contact No</td>
-            <td>+91 8207084112</td>
-          </tr>
-          <tr>
-            <td>Expertise</td>
-            <td>Cartography, Geomorphology, Map Work</td>
-          </tr>
-          <tr>
-            <td>Total Students</td>
-            <td></td>
-          </tr>
+          <tr><td>Subject Focus</td><td>Geography Specialist</td></tr>
+          <tr><td>Designation</td><td>Senior Mentor & Administrator</td></tr>
+          <tr><td>Email Official</td><td>geoidstudycentre@gmail.com</td></tr>
+          <tr><td>Primary Contact</td><td>+91 8207084112</td></tr>
+          <tr><td>Key Expertise</td><td>GEOGRAPHY </td></tr>
+          <tr><td>Center Status</td><td>Active / Verified</td></tr>
         </table>
     </div>
-
-  </div>
+  </main>
 </div>
 
 <footer>
@@ -256,20 +301,21 @@ footer {
     <a href="index.html">Home</a>
     <a href="notice.html">Notice</a>
     <a href="community.html">Community</a>
-    <a href="#">Enrollment</a>
-    <a href="#">Contact</a>
+    <a href="#">Enroll</a>
   </div>
 
-  <div style="font-size: 0.8rem; color: #888; margin: 15px 0;">
-    🕒 <span id="footer-time">00:00:00</span> | Official Founder Profile | Version 2.2.0
-  </div>
+  <span id="footer-time" class="footer-time">00:00:00</span>
+  
+  <p style="font-size: 0.8rem; letter-spacing: 1px;">
+    OFFICIAL FOUNDER PROFILE | VERSION 3.0
+  </p>
 
   <div class="dev-credit">
-    <p>DESIGNED & DEVELOPED BY <br>
-    <a href="community.html#developer-member">SUBHADIP SATPATI</a></p>
+    <p style="font-size: 0.75rem;">DESIGNED & DEVELOPED BY <br>
+    <a href="subha.html">SUBHADIP SATPATI</a></p>
   </div>
 
-  <p style="margin-top:15px; font-size: 0.8rem; opacity: 0.5;">© 2025 GEOID STUDY CENTRE. All rights reserved.</p>
+  <p style="margin-top:20px; font-size: 0.7rem; opacity: 0.4;">© 2025 GEOID STUDY CENTRE. ALL RIGHTS RESERVED.</p>
 </footer>
 
 <script>
@@ -279,6 +325,18 @@ footer {
     }
     setInterval(updateTime, 1000);
     updateTime();
+
+    // Scroll reveal effect
+    window.addEventListener('scroll', () => {
+      const boxes = document.querySelectorAll('.content-box');
+      boxes.forEach(box => {
+        const boxTop = box.getBoundingClientRect().top;
+        if(boxTop < window.innerHeight - 50) {
+          box.style.opacity = '1';
+          box.style.transform = 'translateY(0)';
+        }
+      });
+    });
 </script>
 
 </body>
