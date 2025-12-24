@@ -3,11 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Developer Profile | GEOID CENTRE</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<title>Subhadip | Dark Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-/* Global Styles */
+/* Modern Dark Variables */
+:root {
+  --bg: #0b0e14;
+  --card-bg: #161b22;
+  --accent: #00d2ff;
+  --accent-glow: rgba(0, 210, 255, 0.3);
+  --text: #e6edf3;
+  --text-dim: #8b949e;
+  --gold: #ffca28;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -17,291 +27,323 @@
 }
 
 body {
-  background: linear-gradient(135deg, #b2f7ef, #0f4c3a);
+  background-color: var(--bg);
+  color: var(--text);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  overflow-x: hidden;
 }
 
-/* Header (Site Standard) */
+/* Background Animation Effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 50%, #1a1f2e 0%, #0b0e14 100%);
+  z-index: -1;
+}
+
+/* Entry Animations */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 5px var(--accent-glow); }
+  50% { box-shadow: 0 0 20px var(--accent-glow); }
+  100% { box-shadow: 0 0 5px var(--accent-glow); }
+}
+
 header {
-  background: linear-gradient(135deg, #2ecc71, #1abc9c, #27ae60);
-  color: #fff;
+  padding: 40px 0;
   text-align: center;
-  padding: 25px 0;
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  background: rgba(11, 14, 20, 0.8);
+  backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Profile Container */
+header h1 {
+  font-size: 1.5rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
 .container {
-  width: 95%;
-  max-width: 1100px;
-  margin: 50px auto;
-  display: flex;
-  flex-wrap: wrap;
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 350px 1fr;
   gap: 30px;
-  flex: 1;
+  animation: slideUp 1s ease-out;
 }
 
-/* Silver Premium Sidebar */
+/* Profile Card Styling */
 .profile-card {
-  flex: 1;
-  min-width: 320px;
-  background: linear-gradient(145deg, #ffffff, #e6e9f0); /* Metallic Silver Gradient */
-  border-radius: 30px;
-  padding: 40px 20px;
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 40px 30px;
   text-align: center;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
-  border: 2px solid #bdc3c7; /* Silver Border */
+  border: 1px solid rgba(255,255,255,0.05);
   height: fit-content;
+  transition: 0.4s;
 }
 
-.profile-card img {
-  width: 200px;
-  height: 200px;
+.profile-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-5px);
+}
+
+.img-container {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 25px;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 6px solid #bdc3c7; /* Silver Ring */
-  margin-bottom: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border: 3px solid var(--accent);
+  padding: 5px;
 }
 
-/* ACTIVE STATUS - BOLD BLUE */
-.status-badge {
-    color: #0984e3; /* Bold Electric Blue */
-    font-weight: 900;
-    font-size: 1rem;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.online-status {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  width: 18px;
+  height: 18px;
+  background: #23d160;
+  border: 3px solid var(--card-bg);
+  border-radius: 50%;
+  animation: glowPulse 2s infinite;
 }
 
-.status-dot {
-    width: 12px;
-    height: 12px;
-    background-color: #0984e3;
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 12px #0984e3;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(0.9); opacity: 0.7; }
-  50% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.7; }
-}
-
-.profile-card h2 {
-  color: #2d3436;
-  font-size: 1.8rem;
-  margin-bottom: 5px;
-}
-
-.profile-card .badge {
-  background: #2d3436; /* Dark Onyx Badge */
-  color: #bdc3c7; /* Silver text */
-  padding: 6px 20px;
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 700;
+.profile-card h2 { font-size: 1.8rem; margin-bottom: 5px; }
+.badge {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: var(--accent);
+  background: rgba(0, 210, 255, 0.1);
+  padding: 5px 15px;
+  border-radius: 8px;
   display: inline-block;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 25px;
 }
 
-/* Details Section */
-.profile-details {
-  flex: 2;
-  min-width: 350px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
+/* Detail Box Styling */
 .content-box {
-  background: white;
-  border-radius: 30px;
+  background: var(--card-bg);
+  border-radius: 24px;
   padding: 35px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-  border-left: 5px solid #0984e3; /* Blue Accent Line */
+  margin-bottom: 30px;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+
+.content-box:hover {
+  background: #1c2128;
 }
 
 .content-box h3 {
-  color: #0f4c3a;
+  font-size: 1.2rem;
+  color: var(--accent);
   margin-bottom: 20px;
-  font-size: 1.4rem;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* Table */
-table {
+/* Animated Certificate Section */
+.cert-preview-box {
+  border: 1px solid rgba(255, 202, 40, 0.3);
+}
+
+.gov-tag {
+  background: var(--gold);
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.cert-frame {
+  width: 50%;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  filter: grayscale(40%);
+  transition: 0.5s;
+}
+
+.cert-frame:hover {
+  filter: grayscale(0%);
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.cert-frame img { width: 100%; display: block; }
+
+/* Signature Animation */
+.signature-area {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.signature-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: var(--text);
+  opacity: 0.9;
+  display: inline-block;
+  position: relative;
+}
+
+.signature-text::after {
+  content: "";
+  position: absolute;
+  bottom: 5px; left: 0;
+  width: 0; height: 2px;
+  background: var(--accent);
+  transition: 0.6s ease-out;
+}
+
+.content-box:hover .signature-text::after {
   width: 100%;
-  border-collapse: collapse;
 }
 
-table td {
-  padding: 15px 10px;
-  border-bottom: 1px solid #eee;
-  font-size: 0.95rem;
-}
+/* Table Styling */
+table { width: 100%; border-collapse: collapse; }
+table td { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
+table td:first-child { color: var(--text-dim); width: 35%; }
+table td:last-child { color: var(--accent); font-weight: 600; }
 
-table td:first-child {
-  font-weight: 700;
-  color: #0984e3; /* Blue keys */
-  width: 40%;
-}
-
-.active-text {
-    color: #0984e3;
-    font-weight: 800;
-}
-
-/* Social Buttons */
+/* Social Icons */
+.social-links { display: flex; justify-content: center; gap: 15px; }
 .social-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    background: #f1f2f6;
-    color: #2d3436;
-    border-radius: 50%;
-    margin: 0 8px;
-    transition: 0.3s;
-    text-decoration: none;
-    border: 1px solid #bdc3c7;
+  width: 45px; height: 45px;
+  background: #1c2128;
+  color: var(--text);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: 0.3s;
+  border: 1px solid transparent;
 }
+
 .social-btn:hover {
-    transform: translateY(-5px);
-    background: #0984e3;
-    color: white;
-    border-color: #0984e3;
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px var(--accent-glow);
 }
 
-/* Footer (Site Standard) */
 footer {
-  background: #051929;
-  color: white;
-  padding: 40px 20px 20px;
   text-align: center;
-  margin-top: 50px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
+  padding: 60px 0;
+  background: #0d1117;
+  color: var(--text-dim);
 }
 
-.footer-links a { color: #b2f7ef; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
+.footer-time {
+  font-family: 'Fira Code', monospace;
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  display: block;
+}
 
-.dev-credit a { color: #2ecc71; text-decoration: none; font-weight: 700; }
-
-@media(max-width: 768px) {
-  .container { flex-direction: column; }
+@media (max-width: 850px) {
+  .container { grid-template-columns: 1fr; }
+  .cert-frame { width: 100%; }
 }
 </style>
 </head>
 <body>
 
-<header>💻 Lead Developer Portfolio</header>
+<header>
+  <h1>&lt; SUBHADIP.DEV /&gt;</h1>
+</header>
 
 <div class="container">
-  <div class="profile-card">
-    <img src="https://major-purple-tzpeyhvbex-gio0zdmy0g.edgeone.dev/DEV%20.jpg" alt="Developer Photo">
-    
-    <div class="status-badge">
-        <span class="status-dot"></span> Active Now
+  <aside class="profile-card">
+    <div class="img-container">
+      <img src="https://major-purple-tzpeyhvbex-gio0zdmy0g.edgeone.dev/DEV%20.jpg" alt="Developer Photo">
+      <div class="online-status"></div>
     </div>
-
     <h2>Subhadip Satpati</h2>
-    <span class="badge"><i class="fas fa-terminal"></i> FULL-STACK DEVELOPER</span>
+    <div class="badge">Full-Stack Architect</div>
     
-    <div style="margin: 20px 0; color: #555; font-size: 0.9rem;">
-        <p><i class="fas fa-server"></i> Systems Architect</p>
-        <p><i class="fas fa-code-branch"></i> Geoid Tech Admin</p>
+    <div style="margin-bottom: 30px; text-align: left; padding: 0 10px;">
+        <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px;"><i class="fas fa-terminal" style="color: var(--accent)"></i> Backend Specialist</p>
+        <p style="font-size: 0.85rem; color: var(--text-dim);"><i class="fas fa-network-wired" style="color: var(--accent)"></i> Geoid Tech Admin</p>
     </div>
 
     <div class="social-links">
-        <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
-        <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="mailto:satpatiwebdevloper@zohomail.in" class="social-btn"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/Subha418-ss" class="social-btn"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/subhadip-satpati-029049396" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:satpatiwebdevloper@zohomail.in" class="social-btn"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.instagram.com/subhadip_official19" class="social-btn"><i class="fab fa-instagram"></i></a>
     </div>
-  </div>
+  </aside>
 
-  <div class="profile-details">
-    
+  <main>
+    <div class="content-box cert-preview-box">
+        <div class="gov-tag"><i class="fas fa-check-circle"></i> Verified Certification</div>
+        <h3><i class="fas fa-award"></i> Achievement</h3>
+        <div class="cert-frame">
+          <img src="https://ik.imagekit.io/8v5m0fw9z/My_Bharat_Certificate%20(2).png" alt="Government Certificate">
+        </div>
+    </div>
+
     <div class="content-box">
-        <h3><i class="fas fa-microchip"></i> Technical Vision</h3>
-        <p style="color: #444; line-height: 1.8; font-style: italic;">
+        <h3><i class="fas fa-brain"></i> Design Philosophy</h3>
+        <p style="color: var(--text-dim); line-height: 1.8; font-style: italic; font-family: Noto Serif Bengali;">
             "আধুনিক প্রযুক্তির সঠিক ব্যবহারের মাধ্যমে জটিল শিক্ষাব্যবস্থাকে সহজতর করাই আমার লক্ষ্য। ক্লিন কোড এবং ইউজার-ফ্রেন্ডলি ডিজাইন আমার প্রতিটি কাজের মূল ভিত্তি।"
         </p>
+        <div class="signature-area">
+          <p class="signature-text">Subhadip Satpati</p>
+          <p style="font-size: 0.6rem; color: var(--text-dim); letter-spacing: 2px;">DIGITAL SIGNATURE</p>
+        </div>
     </div>
 
     <div class="content-box">
-        <h3><i class="fas fa-database"></i> Professional Info</h3>
+        <h3><i class="fas fa-code-branch"></i> Technical Specs</h3>
         <table>
-          <tr>
-            <td>Role</td>
-            <td>Lead Web Developer & Admin</td>
-          </tr>
-          <tr>
-            <td>Experience</td>
-            <td>Full-Stack Web Technologies</td>
-          </tr>
-          <tr>
-            <td>Status</td>
-            <td class="active-text">Currently Active</td>
-          </tr>
-          <tr>
-            <td>Expertise</td>
-            <td>Responsive UI/UX & API Design</td>
-          </tr>
-          <tr>
-            <td>Tech Stack</td>
-            <td>JS, PHP, SQL, CSS Grid/Flex</td>
-          </tr>
-          <tr>
-            <td>Availability</td>
-            <td>Remote & Project Based</td>
-          </tr>
+          <tr><td>Designation</td><td>Lead Web Developer & Admin</td></tr>
+          <tr><td>System Health</td><td>Operational / Active</td></tr>
+          <tr><td>Tech Stack</td><td>HTML5, CSS3, JS, BAACKEND(GITHUB & OTHERS SITE)</td></tr>
+          <tr><td>Collaboration</td><td>Remote & Project Based</td></tr>
         </table>
     </div>
-
-  </div>
+  </main>
 </div>
 
 <footer>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
+  <span id="footer-time" class="footer-time">00:00:00</span>
+  <p style="font-size: 0.8rem;"></p>
+  <a href="index.html">Home</a>
+    <a href="notice.html">Notice</a>
     <a href="community.html">Community</a>
-    <a href="notice.html">Notice Board</a>
-    <a href="#">Projects</a>
-  </div>
-
-  <div style="font-size: 0.8rem; color: #888; margin: 15px 0;">
-    🕒 <span id="footer-time">00:00:00</span> | Developer Authority | Version 2.5.0
-  </div>
-
-  <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; padding-top: 20px;">
-    <p style="font-size: 0.85rem; color: #bdc3c7;">
-        DESIGNED & DEVELOPED BY <br>
-        <a href="#" style="color: #2ecc71; text-decoration: none; font-weight: 700;">SUBHADIP SATPATI</a>
-    </p>
-  </div>
-
-  <p style="margin-top:15px; font-size: 0.8rem; opacity: 0.5;">© 2025 GEOID STUDY CENTRE. All rights reserved.</p>
+    <a href="#">Enrollment</a>
+    <a href="#">Contact</a>
+  <p style="font-size: 0.8rem;">
+    DEVELOPED BY <span style="color: var(--text); font-weight: 700;">SUBHADIP SATPATI</span>
+  </p>
+  <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.5;">© 2025 GEOID STUDY CENTRE. SECURED ACCESS.</p>
 </footer>
 
 <script>
@@ -311,6 +353,18 @@ footer {
     }
     setInterval(updateTime, 1000);
     updateTime();
+
+    // Subtle scroll reveals
+    window.addEventListener('scroll', () => {
+      const boxes = document.querySelectorAll('.content-box');
+      boxes.forEach(box => {
+        const boxTop = box.getBoundingClientRect().top;
+        if(boxTop < window.innerHeight - 50) {
+          box.style.opacity = '1';
+          box.style.transform = 'translateY(0)';
+        }
+      });
+    });
 </script>
 
 </body>
