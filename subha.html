@@ -180,22 +180,32 @@ header h1 {
   margin-bottom: 15px;
 }
 
+/* Grid for Multiple Certificates */
+.cert-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 .cert-frame {
-  width: 50%;
+  flex: 1;
+  min-width: 250px;
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
   filter: grayscale(40%);
   transition: 0.5s;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .cert-frame:hover {
   filter: grayscale(0%);
   transform: scale(1.03);
   box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  border-color: var(--gold);
 }
 
-.cert-frame img { width: 100%; display: block; }
+.cert-frame img { width: 100%; display: block; height: auto; }
 
 /* Signature Animation */
 .signature-area {
@@ -266,9 +276,21 @@ footer {
   display: block;
 }
 
+footer a {
+  color: var(--text-dim);
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 0.8rem;
+  transition: 0.3s;
+}
+
+footer a:hover {
+  color: var(--accent);
+}
+
 @media (max-width: 850px) {
   .container { grid-template-columns: 1fr; }
-  .cert-frame { width: 100%; }
+  .cert-frame { flex: 1 1 100%; }
 }
 </style>
 </head>
@@ -302,10 +324,17 @@ footer {
 
   <main>
     <div class="content-box cert-preview-box">
-        <div class="gov-tag"><i class="fas fa-check-circle"></i> Verified Certification</div>
-        <h3><i class="fas fa-award"></i> Achievement</h3>
-        <div class="cert-frame">
-          <img src="https://ik.imagekit.io/8v5m0fw9z/My_Bharat_Certificate%20(2).png" alt="Government Certificate">
+        <div class="gov-tag"><i class="fas fa-check-circle"></i> Verified Certifications</div>
+        <h3><i class="fas fa-award"></i> Achievements</h3>
+        
+        <div class="cert-grid">
+          <div class="cert-frame">
+            <img src="https://ik.imagekit.io/8v5m0fw9z/My_Bharat_Certificate%20(2).png" alt="Government Certificate 1">
+          </div>
+          
+          <div class="cert-frame">
+            <img src="https://img.sanishtech.com/u/cfec69f875cb115943a50237c6743d54.png" alt="Government Certificate 2">
+          </div>
         </div>
     </div>
 
@@ -325,7 +354,7 @@ footer {
         <table>
           <tr><td>Designation</td><td>Lead Web Developer & Admin</td></tr>
           <tr><td>System Health</td><td>Operational / Active</td></tr>
-          <tr><td>Tech Stack</td><td>HTML5, CSS3, JS, BAACKEND(GITHUB & OTHERS SITE)</td></tr>
+          <tr><td>Tech Stack</td><td>HTML5, CSS3, JS, BACKEND(GITHUB & OTHERS SITE)</td></tr>
           <tr><td>Collaboration</td><td>Remote & Project Based</td></tr>
         </table>
     </div>
@@ -334,12 +363,13 @@ footer {
 
 <footer>
   <span id="footer-time" class="footer-time">00:00:00</span>
-  <p style="font-size: 0.8rem;"></p>
-  <a href="index.html">Home</a>
+  <div style="margin-bottom: 20px;">
+    <a href="index.html">Home</a>
     <a href="notice.html">Notice</a>
     <a href="community.html">Community</a>
     <a href="#">Enrollment</a>
     <a href="#">Contact</a>
+  </div>
   <p style="font-size: 0.8rem;">
     DEVELOPED BY <span style="color: var(--text); font-weight: 700;">SUBHADIP SATPATI</span>
   </p>
