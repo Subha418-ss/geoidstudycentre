@@ -248,6 +248,266 @@
             transform: translateX(15px);
         }
 
+        /* WhatsApp 3D Section Styling */
+.whatsapp-3d-container {
+    perspective: 1000px;
+    padding: 60px 0;
+    background: #f0f4f8;
+}
+
+.whatsapp-card-3d {
+    background: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 20px 20px 60px #ccd1d7, -20px -20px 60px #ffffff;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    animation: floatCard 4s ease-in-out infinite;
+    border-top: 1px solid rgba(255,255,255,0.8);
+}
+
+.whatsapp-card-3d:hover {
+    transform: rotateX(10deg) rotateY(5deg) scale(1.02);
+}
+
+.whatsapp-btn-3d {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    color: white;
+    padding: 18px 45px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+    transition: 0.4s;
+    transform: translateZ(30px); /* 3D Depth */
+    border: none;
+    cursor: pointer;
+}
+
+.whatsapp-btn-3d:hover {
+    box-shadow: 0 20px 40px rgba(37, 211, 102, 0.6);
+    transform: translateZ(50px) translateY(-5px);
+}
+
+.whatsapp-btn-3d i {
+    font-size: 1.8rem;
+    animation: iconShake 2s infinite;
+}
+
+/* Animations */
+@keyframes floatCard {
+    0%, 100% { transform: translateY(0) rotateX(0); }
+    50% { transform: translateY(-15px) rotateX(2deg); }
+}
+
+@keyframes iconShake {
+    0%, 90%, 100% { transform: rotate(0); }
+    92% { transform: rotate(15deg); }
+    95% { transform: rotate(-15deg); }
+    98% { transform: rotate(15deg); }
+}
+
+/* SMS 3D Section Styling */
+.sms-btn-3d {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%); /* Blue Gradient */
+    color: white;
+    padding: 18px 45px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.4);
+    transition: 0.4s;
+    transform: translateZ(30px);
+    border: none;
+    margin-top: 15px;
+}
+
+.sms-btn-3d:hover {
+    box-shadow: 0 20px 40px rgba(0, 210, 255, 0.6);
+    transform: translateZ(50px) translateY(-5px);
+}
+
+.sms-btn-3d i {
+    font-size: 1.8rem;
+}
+
+/* Feedback Form Styling */
+.feedback-container {
+    padding: 80px 8%;
+    background: #fff;
+}
+
+.feedback-card {
+    background: white;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.9rem;
+}
+
+.form-group input, .form-group textarea {
+    padding: 15px;
+    border: 2px solid #f0f4f8;
+    border-radius: 12px;
+    font-family: inherit;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--accent);
+    background: #fdfdfd;
+}
+
+.feedback-submit {
+    background: var(--primary);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.feedback-submit:hover {
+    background: #00d2ff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2);
+}
+/* Facebook Section Styling */
+.fb-container {
+    padding: 60px 8%;
+    background: #f0f4f8;
+}
+
+.fb-card-3d {
+    background: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    text-align: center;
+    border-top: 5px solid #1877F2; /* Facebook Blue */
+    transition: 0.4s;
+}
+
+.fb-card-3d:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(24, 119, 242, 0.2);
+}
+
+.fb-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #1877F2;
+    color: white;
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 20px;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(24, 119, 242, 0.3);
+}
+
+.fb-btn:hover {
+    background: #145dbf;
+    transform: scale(1.05);
+}
+
+.fb-btn i {
+    font-size: 1.5rem;
+}
+/* Facebook Group Section Styling */
+.fb-group-container {
+    padding: 60px 8%;
+    background: #ffffff;
+}
+
+.group-card-3d {
+    background: linear-gradient(135deg, #ffffff 0%, #f9faff 100%);
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 20px 20px 60px #d1d9e6, -20px -20px 60px #ffffff;
+    border-left: 8px solid #3b5998;
+    transition: 0.5s;
+}
+
+.group-card-3d:hover {
+    transform: scale(1.03) rotateY(2deg);
+    box-shadow: 0 30px 60px rgba(59, 89, 152, 0.15);
+}
+
+.group-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #4267B2; /* Facebook Official Blue */
+    color: white;
+    padding: 18px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 25px;
+    box-shadow: 0 10px 25px rgba(66, 103, 178, 0.3);
+    transition: 0.4s;
+}
+
+.group-btn:hover {
+    background: #365899;
+    box-shadow: 0 15px 35px rgba(66, 103, 178, 0.5);
+    transform: translateY(-5px);
+}
+
+.group-icon-stack {
+    position: relative;
+    display: inline-block;
+    font-size: 3.5rem;
+    color: #4267B2;
+    margin-bottom: 15px;
+}
         /* --- Footer --- */
         footer {
             background: #051929;
@@ -267,6 +527,53 @@
         .footer-links a { color: #bdc3c7; text-decoration: none; display: block; margin-bottom: 10px; font-size: 0.9rem; }
         .footer-links a:hover { color: var(--secondary); }
 
+        /* 3D Visitor Counter Styling */
+.visitor-box-3d {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #051929; /* Dark Background */
+    border-radius: 15px;
+    box-shadow: inset 5px 5px 15px rgba(0,0,0,0.5), 
+                inset -5px -5px 15px rgba(255,255,255,0.05),
+                0 10px 20px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    margin: 20px 0;
+    transform: perspective(500px) rotateX(10deg);
+    transition: 0.3s;
+}
+
+.visitor-box-3d:hover {
+    transform: perspective(500px) rotateX(0deg) scale(1.05);
+}
+
+.visitor-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.visitor-number-display {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.digit-3d {
+    background: linear-gradient(180deg, #1a2a3a 0%, #051929 100%);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace; /* Digital look */
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: 0 4px 0 #000;
+    border: 1px solid rgba(255,255,255,0.1);
+    text-shadow: 0 0 10px var(--accent);
+}
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -288,7 +595,71 @@
             70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
+/* --- AI Sidebar Adjusted to Top-Left --- */
+.ai-sidebar {
+    position: fixed;
+    left: 15px;
+    /* top: 50% থেকে কমিয়ে 20% করা হলো যাতে এটি অনেক ওপরে থাকে */
+    top: 20%; 
+    /* translateY সরিয়ে দেওয়া হলো যাতে এটি ফিক্সড জায়গায় থাকে */
+    transform: none; 
+    background: rgba(10, 61, 98, 0.9); 
+    backdrop-filter: blur(15px);
+    padding: 22px 12px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    z-index: 2000;
+    border: 1px solid rgba(255, 211, 42, 0.3); 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
+.ai-sidebar:hover {
+    left: 20px;
+    border: 1px solid var(--secondary);
+}
+
+/* বাকি আইটেম এবং টাইটেল আগের মতোই থাকবে */
+.ai-title {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--secondary); 
+    writing-mode: vertical-lr;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.ai-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1); 
+    text-decoration: none;
+    transition: 0.4s;
+    position: relative;
+}
+
+.ai-item img {
+    width: 22px;
+    height: 22px;
+    filter: brightness(1.2); 
+}
+
+.ai-item:hover {
+    transform: scale(1.1) translateX(8px);
+    background: rgba(255, 211, 42, 0.2);
+}
+
+@media (max-width: 992px) {
+    .ai-sidebar { display: none; }
+}
         /* --- Mobile Responsiveness --- */
         @media (max-width: 992px) {
             .hero h2 { font-size: 2.5rem; }
@@ -393,10 +764,119 @@
         </div>
     </section>
 
+<section class="whatsapp-3d-container">
+    <div class="whatsapp-card-3d" data-aos="zoom-in">
+        <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 1.8rem;">Direct Academic Support</h3>
+        <p style="color: #666; margin-bottom: 30px;">আমাদের বিশেষজ্ঞ শিক্ষকদের সাথে সরাসরি কথা বলতে এবং যেকোনো জিজ্ঞাসার জন্য নিচের বাটনে ক্লিক করুন।</p>
+        
+        <a href="https://wa.me/918207084112?text=Hello%20GEOID%20STUDY%20CENTRE,%20I%20want%20to%20know%20more%20about%20your%20courses%20and%20mock%20tests." class="whatsapp-btn-3d" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            CONNECT NOW
+        </a>
+        
+        <p style="margin-top: 20px; font-size: 0.8rem; color: #25d366; font-weight: 600; letter-spacing: 1px;">
+            <i class="fas fa-circle" style="font-size: 8px; vertical-align: middle;"></i> ONLINE SUPPORT ACTIVE
+        </p>
+    </div>
+</section>
+
+<section class="whatsapp-3d-container">
+    <div class="whatsapp-card-3d" data-aos="zoom-in">
+        <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 1.8rem;">Quick Assistance</h3>
+        <p style="color: #666; margin-bottom: 30px;">যেকোনো প্রয়োজনে আমাদের সাথে যোগাযোগ করার জন্য নিচের অপশনগুলো ব্যবহার করুন।</p>
+        
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+            <a href="https://wa.me/918207084112?text=Hello%20GEOID%20STUDY%20CENTRE,%20I%20want%20to%20know%20more%20about%20your%20courses." class="whatsapp-btn-3d" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                WHATSAPP
+            </a>
+
+            <a href="sms:+918207084112?body=Hello%20GEOID%20STUDY%20CENTRE,%20I%20am%20interested%20in%20admission." class="sms-btn-3d">
+                <i class="fas fa-comment-dots"></i>
+                DIRECT SMS
+            </a>
+        </div>
+        
+        <p style="margin-top: 30px; font-size: 0.8rem; color: #3a7bd5; font-weight: 600; letter-spacing: 1px;">
+            <i class="fas fa-clock" style="font-size: 8px; vertical-align: middle;"></i> 24/7 ENQUIRY OPEN
+        </p>
+    </div>
+</section>
+
+          <section class="fb-container">
+    <div class="fb-card-3d" data-aos="flip-up">
+        <div style="font-size: 3rem; color: #1877F2; margin-bottom: 15px;">
+            <i class="fab fa-facebook"></i>
+        </div>
+        <h3 style="color: var(--primary); margin-bottom: 10px;">Follow Us on Facebook</h3>
+        <p style="color: #666;">আমাদের ফেসবুক পেজে জয়েন করুন প্রতিদিনের আপডেট এবং স্টাডি মেটেরিয়াল পেতে।</p>
+        
+        <a href="https://www.facebook.com/your-page-link" class="fb-btn" target="_blank">
+            <i class="fab fa-facebook-square"></i>
+            LIKE OUR PAGE
+        </a>
+        
+        <div style="margin-top: 20px; font-size: 0.85rem; color: #1877F2; font-weight: 600;">
+            <i class="fas fa-users"></i> JOIN OUR GROWING COMMUNITY
+        </div>
+    </div>
+</section>
+
+<section class="fb-group-container">
+    <div class="group-card-3d" data-aos="zoom-in-up">
+        <div class="group-icon-stack">
+            <i class="fas fa-users"></i>
+            <i class="fas fa-plus" style="font-size: 1.2rem; position: absolute; top: 0; right: -10px; color: #25d366;"></i>
+        </div>
+        <h3 style="color: var(--primary); margin-bottom: 10px; font-size: 1.8rem;">Discussion Group</h3>
+        <p style="color: #666; line-height: 1.6;">আমাদের অফিসিয়াল স্টুডেন্ট গ্রুপে যোগ দিন। এখানে আপনি আপনার ডাউট ক্লিয়ার করতে পারবেন এবং অন্যদের সাহায্য করতে পারবেন।</p>
+        
+        <a href="https://www.facebook.com/share/g/1Bh1epLCaZ/" class="group-btn" target="_blank">
+            <i class="fab fa-facebook-messenger"></i>
+            JOIN DISCUSSION GROUP
+        </a>
+        
+        <div style="margin-top: 25px; display: flex; justify-content: center; gap: 15px; font-size: 0.85rem; color: #555;">
+            <span><i class="fas fa-check-circle" style="color: #25d366;"></i> Free Notes</span>
+            <span><i class="fas fa-check-circle" style="color: #25d366;"></i> Q&A Sessions</span>
+            <span><i class="fas fa-check-circle" style="color: #25d366;"></i> Daily Polls</span>
+        </div>
+    </div>
+</section>
+
+<section class="feedback-container" id="feedback">
+    <div class="feedback-card" data-aos="fade-up">
+        <h2 class="section-title" style="margin-bottom: 20px;">Student Feedback</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 40px;">আপনার মূল্যবান মতামত আমাদের আরও উন্নত হতে সাহায্য করবে।</p>
+        
+        <form class="feedback-form" id="feedbackForm">
+            <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" id="name" placeholder="আপনার নাম লিখুন" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Subject</label>
+                <input type="text" id="subject" placeholder="বিষয় (যেমন: ভর্তি, কোর্স সংক্রান্ত)" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Your Message</label>
+                <textarea id="message" rows="5" placeholder="আপনার মতামত এখানে লিখুন..." required></textarea>
+            </div>
+            
+            <button type="submit" class="feedback-submit">
+                <i class="fas fa-paper-plane"></i> SEND FEEDBACK
+            </button>
+        </form>
+    </div>
+</section>
+
+
     <footer>
         <div class="footer-grid">
             <div>
-                <h3 style="color:var(--secondary); margin-bottom:20px;">GEOID CENTRE</h3>
+                <h3 style="color:var(--secondary); margin-bottom:20px;">GEOID STUDY CENTRE</h3>
                 <p style="font-size: 0.9rem; color:#bdc3c7;">Leading the way in Geographic education since inception. Join us to reshape your future.</p>
             </div>
             <div class="footer-links">
@@ -414,9 +894,28 @@
 
         <hr style="opacity:0.1; margin-bottom:20px;">
         
-        <div class="live-info">
-            🕒 <span id="live-time">00:00:00</span> | 👥 Visitors: <span id="visitor-count">0</span> | <span style="color:var(--secondary)">v2.1.0</span>
-        </div>
+        
+       <div class="live-info" style="text-align: center;">
+    <div style="margin-bottom: 15px; font-size: 1.1rem;">
+        🕒 <span id="live-time" style="font-weight: 600; color: var(--secondary); text-shadow: 0 0 10px rgba(255,211,42,0.3);">00:00:00</span>
+    </div>
+
+    <div class="visitor-box-3d">
+        <span class="visitor-label" style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+            <img src="https://flagcdn.com/w40/in.png" class="flag-icon" alt="India">
+            <span style="letter-spacing: 2px;">GLOBAL VISITORS</span>
+            <i class="fas fa-globe-americas globe-icon"></i>
+        </span>
+        <div class="visitor-number-display" id="visitor-3d-display">
+            </div>
+    </div>
+
+    <div style="margin-top: 15px;">
+        <span style="color:var(--secondary); font-size: 0.8rem; opacity: 0.8; letter-spacing: 1px;">
+            <i class="fas fa-shield-alt"></i> SECURE SERVER | V3.0.0
+        </span>
+</div>
+</div>
         
         <p style="margin-top:20px; font-size: 0.8rem; opacity: 0.5;">
             ❤ Made in India | © 2025 GEOID STUDY CENTRE. All Rights Reserved.
@@ -432,11 +931,36 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/918207084112" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp" style="color:white; font-size:35px;"></i>
+    <div class="ai-sidebar" data-aos="fade-right">
+    <div class="ai-title">Summarise With AI</div>
+    
+    <a href="https://chatgpt.com" class="ai-item" data-name="ChatGPT" target="_blank" style="border-bottom: 3px solid #10a37f;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT">
+    </a>
+    
+    <a href="https://www.perplexity.ai" class="ai-item" data-name="Perplexity" target="_blank" style="border-bottom: 3px solid #20b2aa;">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAASFBMVEUAAAAAAAAAAAAAAAAAAAAODg4lJSUxMTF5eXeLi4o5OTnz8/C1tbP///7k5OGwsK5oaGfAwL7OzsydnZxbW1pFRUTY2NZLS0pmsWyyAAAABXRSTlMzx//IxgDMHHYAAAEOSURBVHgBddLhEoMgCADgxhaGmCiqvf+bblrdpnfjD3mfpFDL8oA/8ZxtiNdy5vVMiMPyQrP1RNTTZga0TG23c62M2I64e0EAEQAUv0/IIaptaGMMPOMKSbNI1gTrL66ImQsiVe8rIRbOiOuFNrnITuRz2O4/yXF0yVx4VEctUsPUH109btTcJyBO1UnvMesXQ3t5dFbEur4zjFhUTGvFOB9mDD7BOQRInAbMKxPcCLTjcObBCPdsAfn4VpaqsWP2PneMWsuFuFFqGJRZQ8NEG/7OFmGrFCPVDXAavGEkT+1CnzSj5ejDedvg41y513y3kuv8sfX4tnLoiFh+f7CCA15hzLBcXvA3Hsvy/G9viXYUStfpMwoAAAAASUVORK5CYII=" alt="Perplexity">
+    </a>
+    
+    <a href="https://claude.ai" class="ai-item" data-name="Claude" target="_blank" style="border-bottom: 3px solid #d97757;">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAJFBMVEVHcEzZd1fZd1fZd1fZd1fad1jZd1fZd1fZd1fZd1fZd1fZd1deZDooAAAADHRSTlMA//F3mhLfyjpWsiMDGU5mAAABH0lEQVQokXVSWXbEIAzDuw33v28FJCnpTP3BA6+yRGvbLK39a0F9RUvHZ5CIazZwkm+VpCi1nZP1GpJEnq2NdabzU594N0XpzInRhq/7jvm8wsOjFfVmcQG4guTWZKYL8HSiA1XFHDjgHMqCpKfpNPgIXiZVVvSJ9yazOJARxBiYf/ZMoIUxrYGjRHs/di2nbdzDZxIb1maPriold3QlyFJCAonMd08A7/WhkN19PWDolSeiXU7URWPm8S3ewMCuvGpB+kigVXvWZKlgIVycF0Hjl6DIoVRCGKz9pE8W0QKXkgkIEmjzUDuh11TSuVkn348DLHs1Y7/kzTi+ksX8GLn0wBRrdvCQS949C43fstj6FhfM8Unfqqwv3gf3+/kDMJgHC0kwnjEAAAAASUVORK5CYII=" alt="Claude">
+    </a>
+    
+    <a href="https://gemini.google.com" class="ai-item" data-name="Gemini" target="_blank" style="border-bottom: 3px solid #8e44ad;">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAACU0lEQVRIie2WPWhTURTHz33fTfJeGxOKjdZWYlNMbUXF1DrYbDoquPgNWgdB6uDgUgQnxcEiuHfRpWpwEDK4OViliktBJKZJGk1jYj58yUvey33vXQctSE2bF/WBQv/D3c75cc//nHMvIoSAnaJszb4B+B8B1QpUKzYCjNlZ/PCRjQAciZSiz+0CmK/na1+1HHblFxK2ACo3bxe3Dua2DEYjqb8PUO7eKTBixrsj7fbH6c0zT61azVjK/vh+9s18etu+uDOQFPqzXPfcAkeL5Ow4ahmLWi47+cGt5bdzS5tCcSa4SA9koKcAYt1kP9XRmWG4fuwPAEbyRTl6JWc4U8LuGBlZNIYyjb6S7q7qvG4iE0DG4OFh+igcCLQDIFg24jM4cU9VPxTYYIr43xs7Y+pIpjZUrvcqqqRhxiQ/iqMTyGvQ74Jze+HkQRA7VgOaeoAMFtW8nGzQRSR8wVS+rheJVmloGtUwkUFWosjKiQDWcqMJALEi75/k/ZOc/Cr7cQrXawAKwSWiFk3aDZQTUSwxaSBQweDh4clpGB1Ys0TrtakojY4FnwW6DzuErOgocEIOcQVgqxSNKcrMauTULnh5bb3szW+wSqHeq8D48sloh6NL1jqJ7kSELVRcN8L8RLh1m1qag1DPiaVaOaXGQJB03aHo7Pk97ET4F0ObyeokH/dfEnhT5fIKl5E6P08d6bIY2MYuuhy4kEDL75j09Ph261GWSvRd+73DHp6RKG3M12cLAAAu+g6hNp+Q1rvoZ8lYAQCJddoF+A39a7+KDYAN+gZTyPILUyUbAAAAAABJRU5ErkJggg==" alt="Gemini">
     </a>
 
+    <a href="https://grok.com" class="ai-item" data-name="Grok" target="_blank" style="border-bottom: 3px solid #000;">
+        <img src="https://grok.com/favicon.ico" alt="Grok">
+    </a>
+</div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script
+        chatbot_id="694e50ab9d67ae27dff045e5"
+        data-type="default"
+        src="https://app.thinkstack.ai/bot/thinkstackai-loader.min.js">
+    </script>
     <script>
         // Initialize Animations
         AOS.init({ duration: 1000, once: true });
@@ -457,6 +981,23 @@
             navMenu.classList.toggle('active');
         });
 
+        // Feedback Form Logic
+document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+    
+    const email = "geoidstudycentre@gmail.com"; // আপনার ইমেইল এড্রেস এখানে দিন
+    
+    // Constructing the mailto link
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\n\nMessage:\n" + message)}`;
+    
+    // Open the email client
+    window.location.href = mailtoLink;
+});
+
         // Digital Clock
         function updateTime() {
             const now = new Date();
@@ -465,11 +1006,35 @@
         setInterval(updateTime, 1000);
         updateTime();
 
-        // Simple Visitor Counter
-        let count = localStorage.getItem("visits") || 0;
-        count++;
-        localStorage.setItem("visits", count);
-        document.getElementById("visitor-count").textContent = count;
+// Advanced 3D Visitor Counter Logic
+function updateVisitorDisplay() {
+    let count = localStorage.getItem("visits") || 0;
+    count++;
+    localStorage.setItem("visits", count);
+    
+    const displayContainer = document.getElementById("visitor-3d-display");
+    const countStr = count.toString().padStart(6, '0'); // ৬ ডিজিটের কাউন্টার (যেমন: 000123)
+    
+    displayContainer.innerHTML = ''; // Clear previous
+    
+    countStr.split('').forEach(digit => {
+        const digitSpan = document.createElement('span');
+        digitSpan.className = 'digit-3d';
+        digitSpan.textContent = digit;
+        displayContainer.appendChild(digitSpan);
+    });
+}
+
+// Call the function
+updateVisitorDisplay();
+
+// Keep your existing live-time logic
+function updateTime() {
+    const now = new Date();
+    document.getElementById("live-time").textContent = now.toLocaleTimeString();
+}
+setInterval(updateTime, 1000);
+updateTime();
 
         // Smooth Scroll for Navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -484,6 +1049,5 @@
 </body>
 
 </html>
-
 
 
