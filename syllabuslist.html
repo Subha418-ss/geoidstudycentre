@@ -22,15 +22,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-wrap: wrap; /* Allows stacking on mobile */
+            flex-wrap: wrap;
             gap: 20px;
         }
 
-        /* LOGO WITHOUT BACKGROUND */
         .logo-container img {
-            width: 100px; /* Adjust size */
+            width: 100px;
             height: auto;
-            background: transparent; /* Ensures no box background */
+            background: transparent;
             display: block;
         }
 
@@ -69,8 +68,11 @@
         nav h3 {
             background: #808080;
             color: white;
-            padding: 2px;
+            padding: 5px;
             margin-top: 0;
+            font-size: 1em;
+            text-align: center;
+            border: 1px outset #fff;
         }
 
         nav ul {
@@ -91,6 +93,55 @@
             min-height: 300px;
         }
 
+        /* --- UPDATED BOOK GRID STYLES --- */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .book-card {
+            border: 2px outset #fff;
+            background: #e0e0e0;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .book-card img {
+            width: 80px; /* Small book size */
+            height: 110px;
+            border: 1px solid #000;
+            background-color: #fff;
+            margin-bottom: 10px;
+            transition: transform 0.1s;
+        }
+
+        .book-card img:hover {
+            transform: scale(1.05);
+        }
+
+        .book-card b {
+            display: block;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .book-card a {
+            color: #0000ff;
+            text-decoration: none;
+        }
+
+        .book-card a:hover {
+            text-decoration: underline;
+        }
+
+        .book-card small {
+            color: #666;
+            font-size: 0.75em;
+        }
+
         footer {
             margin-top: 20px;
             text-align: center;
@@ -106,6 +157,9 @@
                 padding: 10px;
             }
             header h1 { font-size: 1.4em; }
+            .book-grid {
+                grid-template-columns: 1fr 1fr; /* Two books per row on mobile */
+            }
         }
     </style>
 </head>
@@ -119,7 +173,8 @@
         </div>
         <div class="header-text">
             <h1>GEOID STUDY CENTRE</h1>
-            <p>SYLLABUS PORTAL</p>
+            <p>DIGITAL LIBRARY</p>
+            <strong>ESTD : 2025</strong>
         </div>
     </header>
 
@@ -136,16 +191,23 @@
             </ul>
             <center>
                 <br>
-                <img src="https://via.placeholder.com/88x31" alt="Best viewed in Netscape">
+                <img src="https://via.placeholder.com/88x31?text=Netscape+Ready" alt="Best viewed in Netscape">
             </center>
         </nav>
 
         <main>
-            <p align="center">
-                <img src="https://cdnl.iconscout.com/lottie/premium/thumb/under-construction-board-4868296-4047934.gif" alt="Construction" style="max-width: 100%;">
-                <br>
-                <b>System Status: Maintenance in progress...</b>
-            </p>
+            <h2 style="border-bottom: 2px solid #000080; color: #000080; margin-top: 0;">Library Catalog</h2>
+            <p>Welcome, traveler. Below you will find our curated selection of digital volumes. Please click on a cover to "download" via FTP.</p>
+            
+            <div class="book-grid">
+                <div class="book-card">
+                    <a href="https://1drv.ms/b/c/68F15A3AD22A5E87/IQA6Ie11OrDWSLih0twOr_thAVVFHDXZYdxRv2cOkGpmibg?e=SN5f1k">
+                        <img src="https://ik.imagekit.io/8v5m0fw9z/preview.jpg" alt="HTML Book">
+                        <b>GEOID STUDY CENTRE: DEVELOPER HANDBOOK</b>
+                    </a>
+                    <small>Size: 425 KB</small>
+                </div>
+            </div>
         </main>
     </div>
 
