@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEOID STUDY CENTRE | Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e293b; 
+            --accent-color: #2563eb;  
+            --success-color: #059669;
+            --error-color: #dc2626;
+            --bg-gray: #f8fafc;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-gray); margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .container { background: #ffffff; width: 100%; max-width: 900px; display: flex; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); min-height: 500px; }
+        .sidebar { flex: 1; background: var(--primary-color); padding: 40px; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .form-section { flex: 1.2; padding: 50px; text-align: center; }
+        .input-group { margin-bottom: 15px; text-align: left; }
+        .input-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; }
+        input { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background-color: var(--accent-color); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+        .hidden { display: none; }
+        #status-msg { margin-top: 15px; padding: 10px; border-radius: 6px; font-size: 0.85rem; display: none; }
+        .err { background: #fef2f2; color: var(--error-color); display: block; }
+        .ok { background: #f0fdf4; color: var(--success-color); display: block; }
+        
+        /* Dashboard Styles */
+        #dashboard-view { text-align: left; }
+        .user-info { background: #f1f5f9; padding: 20px; border-radius: 8px; margin-top: 20px; }
+        .logout-btn { background-color: #64748b; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="sidebar" id="main-sidebar">
+            <h1>GEOID STUDY CENTRE</h1>
+            <p id="sidebar-text">Access your secure student portal for digital learning resources.</p>
+        </div>
+
+        <div class="form-section">
+            <div id="login-view">
+                <h2>Welcome Back</h2>
+                <form id="login-form">
+                    <div class="input-group"><label>Email</label><input type="email" id="login-email" required></div>
+                    <div class="input-group"><label>Password</label><input type="password" id="login-password" required></div>
+                    <button type="submit">Sign In</button>
+                </form>
+                <p>New student? <span style="color:var(--accent-color); cursor:pointer" onclick="toggleAuth()">Register</span></p>
+            </div>
+
+            <div id="signup-view" class="hidden">
+                <h2>Registration</h2>
+                <form id="signup-form">
+                    <div class="input-group"><label>Full Name</label><input type="text" id="signup-name" required></div>
+                    <div class="input-group"><label>Email</label><input type="email" id="signup-email" required></div>
+                    <div class="input-group"><label>Password</label><input type="password" id="signup-password" required></div>
+                    <button type="submit">Create Account</button>
+                </form>
+                <p>Already have an account? <span style="color:var(--accent-color); cursor:pointer" onclick="toggleAuth()">Login</span></p>
+            </div>
+
+            <div id="dashboard-view" class="hidden">
+                <h2>Student Dashboard</h2>
+                <div class="user-info">
+                    <p><strong>Name:</strong> <span id="user-display-name">Loading...</span></p>
+                    <p><strong>Email:</strong> <span id="user-display-email">Loading...</span></p>
+                </div>
+                <p>Welcome to your portal. Here you can access your courses and marks.</p>
+                <button class="logout-btn" onclick="handleSignOut()">Sign Out</button>
+            </div>
+
+            <div id="status-msg"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SB_URL = 'https://vokowckwmrrlqzvfcxcl.supabase.co'; 
+        const SB_KEY = 'sb_publishable_oZMLBAUIUbepAtUeThvT7w_DP7Kaj5N';
+        const _supabase = supabase.createClient(SB_URL, SB_KEY);
+
+        // Views
+        const loginView = document.getElementById('login-view');
+        const signupView = document.getElementById('signup-view');
+        const dashboardView = document.getElementById('dashboard-view');
+        const statusMsg = document.getElementById('status-msg');
+
+        function toggleAuth() {
+            loginView.classList.toggle('hidden');
+            signupView.classList.toggle('hidden');
+            statusMsg.style.display = 'none';
+        }
+
+        function showDashboard(user) {
+            loginView.classList.add('hidden');
+            signupView.classList.add('hidden');
+            dashboardView.classList.remove('hidden');
+            document.getElementById('sidebar-text').innerText = "You are now logged in securely.";
+            
+            // ইউজার ডাটা দেখানো
+            document.getElementById('user-display-name').innerText = user.user_metadata.full_name || "N/A";
+            document.getElementById('user-display-email').innerText = user.email;
+        }
+
+        // লগইন চেক (Page Load হলে)
+        async function checkSession() {
+            const { data: { user } } = await _supabase.auth.getUser();
+            if (user) showDashboard(user);
+        }
+        checkSession();
+
+        // Sign In
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+            if (error) {
+                statusMsg.innerText = error.message;
+                statusMsg.className = 'err';
+            } else {
+                showDashboard(data.user);
+            }
+        });
+
+        // Sign Out
+        async function handleSignOut() {
+            await _supabase.auth.signOut();
+            window.location.reload(); // পেজ রিফ্রেশ করলে আবার লগইন স্ক্রিন আসবে
+        }
+
+        // Signup (আগের মতই থাকবে)
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+
+            const { data, error } = await _supabase.auth.signUp({
+                email, password, options: { data: { full_name: name } }
+            });
+
+            if (error) {
+                statusMsg.innerText = error.message;
+                statusMsg.className = 'err';
+            } else {
+                statusMsg.innerText = "Success! Now please Login.";
+                statusMsg.className = 'ok';
+                toggleAuth();
+            }
+        });
+    </script>
+</body>
+</html>
