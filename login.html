@@ -2,233 +2,224 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Geoid Study Centre | Student Portal</title>
+<title>Geoid Study Centre | Student Portal (Mobile Legacy)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-    margin:0;
-    font-family: Arial, Helvetica, sans-serif;
-    background:#ffffff;
+/* ===== GLOBAL STYLES ===== */
+body {
+    margin: 0;
+    font-family: "Times New Roman", Times, serif;
+    background: #008080; /* Windows Teal */
+    color: #000;
 }
 
 /* ===== HEADER ===== */
-.header img{
-    width:100%;
-    max-height:240px;
-    object-fit:cover;
-    border-bottom:1px solid #ccc;
+.header {
+    background: #000080;
+    color: white;
+    padding: 10px;
+    border-bottom: 3px double #ffffff;
+    text-align: center;
+}
+.header h1 { font-size: 1.5rem; margin: 5px 0; }
+.header img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #fff;
 }
 
 /* ===== LAYOUT ===== */
-.wrapper{display:flex}
+.wrapper {
+    display: flex;
+    flex-direction: row; /* Default Desktop */
+    max-width: 1000px;
+    margin: 10px auto;
+    background: #c0c0c0;
+    border: 3px outset #fff;
+    min-height: 500px;
+}
 
 /* ===== SIDEBAR ===== */
-.sidebar{
-    width:120px;
-    background:#0b5ed7;
+.sidebar {
+    width: 160px;
+    background: #d4d0c8;
+    border-right: 2px inset #fff;
+    padding: 10px 5px;
 }
-.sidebar a{
-    display:block;
-    color:#fff;
-    text-decoration:none;
-    font-size:13px;
-    padding:10px;
-    text-align:center;
-    border-bottom:1px solid rgba(255,255,255,.25);
+.sidebar a {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 2px outset #fff;
+    background: #c0c0c0;
+    text-align: center;
 }
-.sidebar a:hover{background:#084298}
 
 /* ===== CONTENT ===== */
-.content{
-    flex:1;
-    padding:20px;
-    background:#f5fbff;
+.content {
+    flex: 1;
+    padding: 10px;
+    background: #fff;
+    margin: 10px;
+    border: 2px inset #808080;
+    overflow-x: hidden; /* Prevent mobile horizontal scroll */
 }
 
-/* ===== BOX ===== */
-.portal-box{
-    border:1px solid #b6d7ea;
-    background:#fff;
+/* ===== PORTAL ELEMENTS ===== */
+.portal-box { border: 1px solid #000; margin-bottom: 10px; }
+.portal-title {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    padding: 4px 8px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 14px;
 }
-.portal-title{
-    background:#d9edf7;
-    padding:8px 12px;
-    font-weight:bold;
-    color:#31708f;
+.notice { margin-bottom: 15px; border: 1px solid #808080; }
+.notice-title { background: #ffff00; padding: 3px; font-weight: bold; }
+.notice-box { height: 40px; padding: 5px; overflow: hidden; }
+
+.login {
+    border: 2px outset #fff;
+    background: #d4d0c8;
+    padding: 15px;
+    width: 90%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+.login input {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 2px inset #fff;
+    padding: 8px 4px; /* Larger for touch */
+    box-sizing: border-box;
+}
+.login button, .dashboard button, #signup-view button {
+    background: #c0c0c0;
+    border: 2px outset #fff;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%; /* Full width buttons on mobile */
 }
 
-/* ===== PORTAL BODY ===== */
-.portal-body{
-    display:flex;
-    padding:15px;
+footer {
+    text-align: center;
+    background: #c0c0c0;
+    padding: 10px;
+    border-top: 2px solid #808080;
+    font-size: 12px;
 }
 
-/* NOTICE */
-.notice{
-    flex:2;
-    margin-right:20px;
-}
-.notice-title{
-    background:#dff0d8;
-    color:#3c763d;
-    padding:6px 10px;
-    font-size:13px;
-    border:1px solid #d6e9c6;
-}
-.notice-box{
-    height:90px;
-    border:1px solid #d6e9c6;
-    margin-top:5px;
-    padding:5px;
-    font-size:12px;
-}
+.hidden { display: none; }
 
-/* LOGIN */
-.login{
-    flex:1;
-    border:1px solid #ebccd1;
-    background:#fdf7f7;
-    padding:10px;
+/* ===== MOBILE RESPONSIVE OVERRIDES ===== */
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column; /* Stack sidebar on top of content */
+        margin: 5px;
+        min-height: auto;
+    }
+    .sidebar {
+        width: auto;
+        border-right: none;
+        border-bottom: 2px inset #fff;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two columns of buttons */
+        gap: 5px;
+    }
+    .sidebar a { margin: 0; }
+    .content { margin: 5px; }
+    .header h1 { font-size: 1.2rem; }
 }
-.login-title{
-    background:#f2dede;
-    color:#a94442;
-    padding:6px;
-    font-weight:bold;
-}
-.login input{
-    width:100%;
-    padding:6px;
-    margin-top:8px;
-    font-size:12px;
-}
-.login button{
-    margin-top:10px;
-    padding:6px 12px;
-    background:#5bc0de;
-    border:none;
-    color:#fff;
-    cursor:pointer;
-    float:right;
-}
-.login p{
-    font-size:11px;
-    color:#a94442;
-    margin-top:10px;
-    clear:both;
-}
-
-/* FIND */
-.find-box{
-    margin-top:15px;
-    border:1px solid #b6d7ea;
-}
-.find-title{
-    background:#428bca;
-    color:#fff;
-    padding:8px 12px;
-}
-.find-body{
-    padding:20px;
-    text-align:center;
-}
-
-/* SIGNUP / DASHBOARD */
-.hidden{display:none}
-.dashboard{
-    background:#fff;
-    border:1px solid #b6d7ea;
-    padding:20px;
-}
-.status{font-size:12px;color:red;margin-top:5px}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
-    <img src="https://ik.imagekit.io/8v5m0fw9z/Blue%20and%20White%20Modern%20Coming%20Soon%20Email%20Header.png" alt="Midnapore College">
+    <img src="https://ik.imagekit.io/8v5m0fw9z/Blue%20and%20White%20Modern%20Coming%20Soon%20Email%20Header.png" alt="Header">
+    <div style="font-size: 11px; margin-top:5px;"><strong>STUDENT ERP PORTAL - V.3.1.0</strong></div>
 </div>
 
 <div class="wrapper">
+    <div class="sidebar">
+        <a href="#">HOME</a>
+        <a href="#">FEES</a>
+        <a href="#">ATTEND</a>
+        <a href="#">EXAMS</a>
+        <a href="#">LIBRARY</a>
+        <a href="#">NOTICES</a>
+    </div>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-    <a href="#">Fees Payment</a>
-    <a href="#">Attendance</a>
-    <a href="#">Exam</a>
-    <a href="#">Library</a>
-    <a href="#">Notice</a>
-</div>
+    <div class="content">
+        <div id="login-view">
+            <div class="portal-box">
+                <div class="portal-title">System.Login</div>
+                <div style="padding: 10px;">
+                    <div class="notice">
+                        <div class="notice-title">NEWS:</div>
+                        <div class="notice-box">
+                            <marquee scrollamount="3">Registration Open 2026! Data updates pending...</marquee>
+                        </div>
+                    </div>
 
-<!-- CONTENT -->
-<div class="content">
+                    <div class="login">
+                        <form id="login-form">
+                            <label>Email:</label><br>
+                            <input type="email" id="login-email" required><br>
+                            <label>Password:</label><br>
+                            <input type="password" id="login-password" required><br>
+                            <button type="submit">LOGIN</button>
+                        </form>
+                        <p style="font-size: 12px; text-align: center;">
+                            New? <a href="#" onclick="toggleAuth()">[Register]</a>
+                        </p>
+                        <div id="status-msg" style="color:red; font-size:12px; font-weight:bold;"></div>
+                    </div>
+                </div>
+            </div>
+        </div><strong>Helpdesk :</strong><a> +91 8207084112</a>
 
-<!-- LOGIN VIEW -->
-<div id="login-view" class="portal-box">
-    <div class="portal-title">Student Portal</div>
-
-    <div class="portal-body">
-        <div class="notice">
-            <div class="notice-title"><strong>Notice</strong></div>
-            <div class="notice-box">
-                <strong>Data Will be add soon...</strong>
+        <div id="signup-view" class="hidden">
+            <div class="portal-box">
+                <div class="portal-title">Register.exe</div>
+                <div style="padding:15px; background:#d4d0c8;">
+                    <form id="signup-form">
+                        Name: <input type="text" id="signup-name" style="width:100%; padding:8px; margin-bottom:10px;" required><br>
+                        Email: <input type="email" id="signup-email" style="width:100%; padding:8px; margin-bottom:10px;" required><br>
+                        Pass: <input type="password" id="signup-password" style="width:100%; padding:8px; margin-bottom:10px;" required><br>
+                        <button>SUBMIT</button>
+                    </form>
+                    <p style="text-align:center"><a href="#" onclick="toggleAuth()">Back to Login</a></p>
+                </div>
             </div>
         </div>
 
-        <div class="login">
-            <div class="login-title">Login</div>
-
-            <form id="login-form">
-                <input type="email" id="login-email" placeholder="Enter Email" required>
-                <input type="password" id="login-password" placeholder="Enter Password" required>
-                <button type="submit">Sign In</button>
-            </form>
-
-            <p>
-                New Student?
-                <span style="color:#337ab7;cursor:pointer" onclick="toggleAuth()">Register</span>
-            </p>
-            <div id="status-msg" class="status"></div>
+        <div id="dashboard-view" class="hidden">
+            <div class="portal-box">
+                <div class="portal-title">User_Dashboard.sys</div>
+                <div style="padding:15px;">
+                    <h3 style="text-decoration: underline;">Welcome</h3>
+                    <p><b>NAME:</b> <span id="d-name"></span></p>
+                    <p><b>EMAIL:</b> <span id="d-email"></span></p>
+                    <hr>
+                    <button onclick="logout()">LOGOUT / EXIT</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- SIGNUP VIEW -->
-<div id="signup-view" class="portal-box hidden">
-    <div class="portal-title">Student Registration</div>
-    <div style="padding:20px">
-        <form id="signup-form">
-            <input type="text" id="signup-name" placeholder="Full Name" required><br><br>
-            <input type="email" id="signup-email" placeholder="Email" required><br><br>
-            <input type="password" id="signup-password" placeholder="Password" required><br><br>
-            <button>Create Account</button>
-        </form>
-        <p>
-            Already Registered?
-            <span style="color:#337ab7;cursor:pointer" onclick="toggleAuth()">Login</span>
-        </p>
-    </div>
-</div>
-
-<!-- DASHBOARD -->
-<div id="dashboard-view" class="dashboard hidden">
-    <h2>Student Dashboard</h2>
-    <p><b>Name:</b> <span id="d-name"></span></p>
-    <p><b>Email:</b> <span id="d-email"></span></p>
-    <p>Welcome to Geoid Study Centre Student ERP Portal.</p>
-    <button onclick="logout()">Logout</button>
-</div>
-
-</div>
-</div>
 <footer>
-    <strong>Designed By:Subhadip Satpati</strong>
+    <strong>© 2026 GEOID STUDY CENTRE. All Rights Reserved.</strong> 
+     <p>Designed By:</p><a href="https://subha418-ss.github.io/Subhadip-Satpati/">Subhadip Cyber Technology</a>
 </footer>
 
-<!-- SUPABASE -->
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script>
 const supabaseUrl = "https://vokowckwmrrlqzvfcxcl.supabase.co";
@@ -249,58 +240,41 @@ function showDashboard(user){
     loginView.classList.add("hidden");
     signupView.classList.add("hidden");
     dashboardView.classList.remove("hidden");
-    document.getElementById("d-name").innerText =
-        user.user_metadata?.full_name || "N/A";
+    document.getElementById("d-name").innerText = user.user_metadata?.full_name || "User";
     document.getElementById("d-email").innerText = user.email;
 }
 
-/* SESSION CHECK */
 (async()=>{
     const { data } = await sb.auth.getUser();
     if(data.user) showDashboard(data.user);
 })();
 
-/* LOGIN */
 document.getElementById("login-form").addEventListener("submit", async e=>{
     e.preventDefault();
-    const email = document.getElementById("login-email").value;
-    const password = document.getElementById("login-password").value;
-
-    const { data, error } = await sb.auth.signInWithPassword({ email, password });
-    if(error){
-        statusMsg.innerText = error.message;
-    }else{
-        showDashboard(data.user);
-    }
+    statusMsg.innerText = "Checking...";
+    const { data, error } = await sb.auth.signInWithPassword({ 
+        email: document.getElementById("login-email").value, 
+        password: document.getElementById("login-password").value 
+    });
+    if(error) statusMsg.innerText = error.message;
+    else showDashboard(data.user);
 });
 
-/* SIGNUP */
 document.getElementById("signup-form").addEventListener("submit", async e=>{
     e.preventDefault();
-    const name = document.getElementById("signup-name").value;
-    const email = document.getElementById("signup-email").value;
-    const password = document.getElementById("signup-password").value;
-
     const { error } = await sb.auth.signUp({
-        email,
-        password,
-        options:{ data:{ full_name:name } }
+        email: document.getElementById("signup-email").value,
+        password: document.getElementById("signup-password").value,
+        options:{ data:{ full_name: document.getElementById("signup-name").value } }
     });
-
-    if(error){
-        alert(error.message);
-    }else{
-        alert("Registration successful. Please login.");
-        toggleAuth();
-    }
+    if(error) alert(error.message);
+    else { alert("Success! Please login."); toggleAuth(); }
 });
 
-/* LOGOUT */
 async function logout(){
     await sb.auth.signOut();
     location.reload();
 }
 </script>
-
 </body>
 </html>
