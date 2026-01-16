@@ -100,7 +100,126 @@
             border: 2px solid var(--secondary);
         }
 
-        
+/* AEC Container for Side-by-Side layout */
+.aec-container {
+    display: flex;
+    flex-wrap: wrap; /* মোবাইল ডিভাইসে কার্ডগুলো একটির নিচে আরেকটি আসার জন্য */
+    gap: 20px; /* কার্ডগুলোর মাঝখানের গ্যাপ */
+    justify-content: center; /* কার্ডগুলোকে সেন্টারে রাখার জন্য */
+    padding: 60px 8%;
+    background: #fdfdfd;
+}
+
+.aec-card {
+    background: #ffffff;
+    flex: 1; /* সমান জায়গা নিবে */
+    min-width: 300px; /* ছোট স্ক্রিনে ৩০০০পিক্সেল এর নিচে যাবে না */
+    max-width: 400px; /* বড় স্ক্রিনে অতিরিক্ত বড় হবে না */
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease;
+}
+
+.aec-card:hover {
+    transform: translateY(-5px);
+}
+
+.aec-icon {
+    font-size: 3.5rem;
+    color: #5dcb73;
+    margin-bottom: 15px;
+}
+
+.aec-card h2 {
+    color: #4a4a4a;
+    font-size: 1.5rem; /* পাশাপাশি রাখার জন্য ফন্ট সাইজ একটু কমানো হয়েছে */
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.aec-btn {
+    background-color: #5dcb73;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.aec-btn:hover {
+    background-color: #4bad5f;
+    color: white;
+}
+
+/* YouTube Grid Section Style */
+.video-gallery-section {
+    padding: 60px 8%;
+    background: #fdfdfd;
+}
+
+.video-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.video-card-3d {
+    background: #fff;
+    flex: 1;
+    min-width: 280px;
+    max-width: 360px; /* ভিডিওর সাইজ ছোট রাখার জন্য */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid #eee;
+}
+
+.video-card-3d:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.video-box-inner {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.video-box-inner iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-card-info {
+    padding: 15px;
+    text-align: left;
+}
+
+.video-card-info h3 {
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.video-card-info p {
+    font-size: 0.8rem;
+    color: #777;
+    margin: 0;
+    font-family: 'Noto Serif Bengali', serif;
+}
 
         /* --- Section Styling --- */
         section { padding: 100px 8%; position: relative; }
@@ -822,7 +941,7 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="portal.html">Student Portal</a></li>
                 <li><a href="course.html">Courses</a></li>
-                <li><a href="https://sites.google.com/view/geoid-study-centre-alumni/">Alumni</a></li>
+                <li><a href="http://sukdebdas4.website3.me">Contact us</a></li>
                 <li><a href="commiunity.html">Commiunity</a></li>
                 <li><a href="login.html" class="login-btn"><i class="fas fa-user-circle"></i> Student Login</a></li>
             </ul>
@@ -895,12 +1014,73 @@
 
 <div class="section-container">
   <div class="retro-banner">
-    <div class="retro-new blink">NEW</div>
+    <div class="retro-new blink">NEW </div>
     <a href="YOUR_URL_HERE" class="retro-link">
       Alumni Registration Started – <span class="click-red">Click Here</span>
     </a>
   </div>
 </div>
+
+<section class="aec-container">
+    <div class="aec-card" data-aos="zoom-in">
+        <div class="aec-icon">
+            <i class="fas fa-book-open"></i>
+        </div>
+        <h2>Madhyamik Suggestion - 2026</h2>
+        <p>Subject - Geography , Suggestion Prepared By - Mr. Sukdeb Das(CEO)</p>
+        <a href="" class="aec-btn">View Suggestion</a>
+    </div>
+
+    <div class="aec-card" data-aos="zoom-in" data-aos-delay="200">
+        <div class="aec-icon">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h2>GEOID STUDY CENTRE: DEVELOPER HANDBOOK</h2>
+        <p>Document Type: Institutional & Developer Handbook
+Motto: "Education brings consciousness, consciousness brings revolution"
+<strong>Author: Subhadip Satpati</strong>
+Edition: First Edition (2025)
+Publisher : GEOID STUDY CENTRE
+</p>
+        <a href="https://drive.google.com/file/d/1Cq7CueGS5ZqpqTO6bNrIjlLrZ9EbOVCr/view?usp=sharing" class="aec-btn">View Handbook</a>
+    </div>
+</section>
+
+<section class="video-gallery-section">
+    <h2 class="section-title">Video Lectures</h2>
+    
+    <div class="video-grid">
+        <div class="video-card-3d" data-aos="fade-up">
+            <div class="video-box-inner">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Jy7UlXnA4mo?si=fzaNdLmyS4ofqOYV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-card-info">
+                <h3>জোয়ার ভাটা: কারণ ও ফলাফল বিস্তারিত আলোচনা</h3>
+                <p>দশম শ্রেণী | ভূগোল | পার্ট ১</p>
+            </div>
+        </div>
+
+        <div class="video-card-3d" data-aos="fade-up" data-aos-delay="100">
+            <div class="video-box-inner">
+                <iframe src="https://www.youtube.com/embed/Jy7UlXnA4mo?si=baDaGycu77uBaODt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-card-info">
+                <h3>মাধ্যমিক ২০২৬: ম্যাপ পয়েন্টিং স্পেশাল ক্লাস</h3>
+                <p>Geography Expert | Chapter 5</p>
+            </div>
+        </div>
+
+        <div class="video-card-3d" data-aos="fade-up" data-aos-delay="200">
+            <div class="video-box-inner">
+                <iframe src="https://www.youtube.com/embed/Jy7UlXnA4mo?si=baDaGycu77uBaODt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-card-info">
+                <h3>ভারতের প্রাকৃতিক পরিবেশ ও জলবায়ু</h3>
+                <p>HS Geography | Important Tips</p>
+            </div>
+        </div>
+    </div>
+</section>
 
     <section id="mock-test">
         <h2 class="section-title">Academic Mock Test 2026</h2>
@@ -1310,6 +1490,7 @@
             <div>
                 <h3 style="color:var(--secondary); margin-bottom:20px;">GEOID STUDY CENTRE</h3>
                 <p style="font-size: 0.9rem; color:#bdc3c7;">Leading the way in Geographic education since inception. Join us to reshape your future.</p>
+                <strong>Last Update : 14 January 2026</strong>
             </div>
             <div class="footer-links">
                 <h4>Legal & Safety</h4>
@@ -1318,7 +1499,6 @@
                 <a href="disclaimer.html">Disclaimer</a>
                 <a href="dev.html">Devloper Policy</a>
                 <a href="https://cerulean-banoffee-2a2d9c.netlify.app/">Old Website🌐</a>
-                <a href="https://sites.google.com/view/geoid-study-centre-alumni/">Alumni<a/>
             </div>
             <div>
                 <h4>Contact Info</h4>
@@ -1333,7 +1513,7 @@
 <script src="https://cdn.logwork.com/widget/digital.js"></script>
 <a href="https://logwork.com/clock-widget/" class="digital-clock" data-style="flip" data-size="250" data-timezone="Asia/Kolkata" data-language="en">Time in India</a>
 
- <a href='http://www.freevisitorcounters.com'>click here</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=cb0bec80934c7d2147ccb74a86b1c0a3e9a9bc8e'></script>
+ <a href='http://www.freevisitorcounters.com'>.</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=cb0bec80934c7d2147ccb74a86b1c0a3e9a9bc8e'></script>
 <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1467237/t/0"></script>   
 
        
@@ -1365,7 +1545,7 @@
 
 <div class="ai-trigger" onclick="toggleAISidebar()">
     <i class="fas fa-robot"></i>
-    <span>AI AI</span>
+    <span>AI </span>
 </div>
 
 <div class="ai-sidebar-drawer" id="aiDrawer">
@@ -1500,9 +1680,6 @@ updateVisitorDisplay();
 </body>
 
 </html>
-
-
-
 
 
 
